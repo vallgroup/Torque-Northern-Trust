@@ -11,14 +11,18 @@ export default function Grid() {
   const [focusedPortait, setFocus] = useState(gridData[count]);
   const [recentlyClicked, setRecentlyClicked] = useState(false);
 
+  // setInterval hook
   useInterval(() => {
+    // increment the counter if the counter is less than 22 and the page has not been interacted with recently
     if (count < 22 && !recentlyClicked) {
       setCount(count + 1);
+      // reset count to 0 when counter reaches 22 and the page has not been interacted with recently
     } else if (count === 22 && !recentlyClicked) {
       setCount(0);
     }
   }, 5000);
 
+  // when the count increments, change the grid portrait that is in focus
   useEffect(() => {
     function timedFocus() {
       setFocus(gridData[count]);
@@ -26,6 +30,7 @@ export default function Grid() {
     return timedFocus();
   }, [count, gridData]);
 
+  // set the focused portrait to the item the user selects, set recentlyClicked to true so the count stops running
   const changeFocus = index => {
     setCount(index);
     setRecentlyClicked(true);
@@ -33,6 +38,7 @@ export default function Grid() {
       setRecentlyClicked(false);
     }, 5000);
   };
+
   return (
     <GridContainer>
       {gridData.map((portrait, i) => (
@@ -43,7 +49,6 @@ export default function Grid() {
           onClick={changeFocus}
         />
       ))}
-      <h1>{count}</h1>
       <FocusedPortrait portrait={focusedPortait} />
     </GridContainer>
   );
