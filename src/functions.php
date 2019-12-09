@@ -1,43 +1,77 @@
 <?php
 
+require_once( get_stylesheet_directory() . '/api/northern-trust-child-rest-controller-class.php');
 require_once( get_stylesheet_directory() . '/includes/northern-trust-child-nav-menus-class.php');
 require_once( get_stylesheet_directory() . '/includes/widgets/northern-trust-child-widgets-class.php');
 require_once( get_stylesheet_directory() . '/includes/customizer/northern-trust-child-customizer-class.php');
 require_once( get_stylesheet_directory() . '/includes/acf/northern-trust-child-acf-class.php');
 
-/**
- * Child Theme Nav Menus
- */
-
- if ( class_exists( 'TQNT_Nav_Menus' ) ) {
-   new TQNT_Nav_Menus();
- }
+require_once( get_stylesheet_directory() . '/includes/cpt/portrait-grid/northern-trust-child-portrait-grid-cpt-class.php');
+require_once( get_stylesheet_directory() . '/includes/cpt/icon-grid/northern-trust-child-icon-grid-cpt-class.php');
+require_once( get_stylesheet_directory() . '/includes/cpt/events/northern-trust-child-events-cpt-class.php');
 
 /**
- * Child Theme Widgets
- */
+* Child Theme Nav Menus
+*/
+
+if ( class_exists( 'TQNT_Nav_Menus' ) ) {
+ new TQNT_Nav_Menus();
+}
+
+/**
+* Child Theme Widgets
+*/
 
 if ( class_exists( 'TQNT_Widgets' ) ) {
-  new TQNT_Widgets();
+new TQNT_Widgets();
 }
 
 /**
- * Child Theme Customizer
- */
+* Child Theme Customizer
+*/
 
 if ( class_exists( 'TQNT_Customizer' ) ) {
-  new TQNT_Customizer();
+new TQNT_Customizer();
 }
 
 /**
- * Child Theme ACF
- */
+* Child Theme ACF
+*/
 
- if ( class_exists( 'TQNT_ACF' ) ) {
-   new TQNT_ACF();
- }
+if ( class_exists( 'TQNT_ACF' ) ) {
+ new TQNT_ACF();
+}
 
 
+/**
+* Instantiate our CPT classes
+*/
+
+if ( class_exists( 'TQNT_Portrait_Grid_CPT' ) ) {
+  new TQNT_Portrait_Grid_CPT();
+}
+
+if ( class_exists( 'TQNT_Icon_Grid_CPT' ) ) {
+  new TQNT_Icon_Grid_CPT();
+}
+
+if ( class_exists( 'TQNT_Events_CPT' ) ) {
+  new TQNT_Events_CPT();
+}
+
+/**
+* Instantiate our REST Class
+*/
+
+if ( class_exists( 'TQNT_REST_Controller' ) ) {
+  new TQNT_REST_Controller();
+}
+
+if ( class_exists( 'Torque_Map_CPT' ) ) {
+  // add POIs to the map CPT
+  add_filter( Torque_Map_CPT::$POIS_ALLOWED_FILTER, function( $n ) {return $n = 5;} );
+  add_filter( Torque_Map_CPT::$POIS_MANUAL_FILTER, function( $n ) {return $n = false;} );
+}
 
 
 /**
@@ -46,17 +80,20 @@ if ( class_exists( 'TQNT_Customizer' ) ) {
 
  // remove menu items
  function torque_remove_menus(){
-
+   /*
+   This backend is meant to be used to manage the TV app only,
+   therefore, we will remove all unrelated menu items. MV
+   */
    //remove_menu_page( 'index.php' );                  //Dashboard
-   //remove_menu_page( 'edit.php' );                   //Posts
+   remove_menu_page( 'edit.php' );                   //Posts
    //remove_menu_page( 'upload.php' );                 //Media
    //remove_menu_page( 'edit.php?post_type=page' );    //Pages
-   //remove_menu_page( 'edit-comments.php' );          //Comments
-   //remove_menu_page( 'themes.php' );                 //Appearance
+   remove_menu_page( 'edit-comments.php' );          //Comments
+   // remove_menu_page( 'themes.php' );                 //Appearance
    //remove_menu_page( 'plugins.php' );                //Plugins
-   //remove_menu_page( 'users.php' );                  //Users
-   //remove_menu_page( 'tools.php' );                  //Tools
-   //remove_menu_page( 'options-general.php' );        //Settings
+   remove_menu_page( 'users.php' );                  //Users
+   remove_menu_page( 'tools.php' );                  //Tools
+   // remove_menu_page( 'options-general.php' );        //Settings
 
  }
  add_action( 'admin_menu', 'torque_remove_menus' );
