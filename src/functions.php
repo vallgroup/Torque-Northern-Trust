@@ -7,6 +7,8 @@ require_once( get_stylesheet_directory() . '/includes/customizer/northern-trust-
 require_once( get_stylesheet_directory() . '/includes/acf/northern-trust-child-acf-class.php');
 
 require_once( get_stylesheet_directory() . '/includes/cpt/portrait-grid/northern-trust-child-portrait-grid-cpt-class.php');
+require_once( get_stylesheet_directory() . '/includes/cpt/icon-grid/northern-trust-child-icon-grid-cpt-class.php');
+require_once( get_stylesheet_directory() . '/includes/cpt/events/northern-trust-child-events-cpt-class.php');
 
 /**
 * Child Theme Nav Menus
@@ -49,12 +51,26 @@ if ( class_exists( 'TQNT_Portrait_Grid_CPT' ) ) {
   new TQNT_Portrait_Grid_CPT();
 }
 
+if ( class_exists( 'TQNT_Icon_Grid_CPT' ) ) {
+  new TQNT_Icon_Grid_CPT();
+}
+
+if ( class_exists( 'TQNT_Events_CPT' ) ) {
+  new TQNT_Events_CPT();
+}
+
 /**
 * Instantiate our REST Class
 */
 
 if ( class_exists( 'TQNT_REST_Controller' ) ) {
   new TQNT_REST_Controller();
+}
+
+if ( class_exists( 'Torque_Map_CPT' ) ) {
+  // add POIs to the map CPT
+  add_filter( Torque_Map_CPT::$POIS_ALLOWED_FILTER, function( $n ) {return $n = 5;} );
+  add_filter( Torque_Map_CPT::$POIS_MANUAL_FILTER, function( $n ) {return $n = false;} );
 }
 
 
@@ -73,7 +89,7 @@ if ( class_exists( 'TQNT_REST_Controller' ) ) {
    //remove_menu_page( 'upload.php' );                 //Media
    //remove_menu_page( 'edit.php?post_type=page' );    //Pages
    remove_menu_page( 'edit-comments.php' );          //Comments
-   remove_menu_page( 'themes.php' );                 //Appearance
+   // remove_menu_page( 'themes.php' );                 //Appearance
    //remove_menu_page( 'plugins.php' );                //Plugins
    remove_menu_page( 'users.php' );                  //Users
    remove_menu_page( 'tools.php' );                  //Tools
