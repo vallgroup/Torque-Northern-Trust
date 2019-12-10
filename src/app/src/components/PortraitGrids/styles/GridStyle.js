@@ -23,7 +23,7 @@ export const FocusedPortaitContainer = styled.div`
   grid-column-start: 5;
   grid-column-end: 8;
   background: red;
-  transition: background-image 400ms;
+  transition: background-image 500ms;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
