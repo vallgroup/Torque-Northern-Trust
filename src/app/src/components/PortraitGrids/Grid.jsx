@@ -29,17 +29,6 @@ export default function Grid(props) {
     }
   }, 5000);
 
-  useInterval(() => {
-    function goHome() {
-      props.history.push("/");
-    }
-    console.log("second interval running");
-
-    if (!recentlyClicked) {
-      return goHome();
-    }
-  }, 15000);
-
   // when the count increments, change the grid portrait that is in focus
   useEffect(() => {
     function timedFocus() {
@@ -65,7 +54,7 @@ export default function Grid(props) {
       timeout = null;
       setRecentlyClicked(false);
     };
-  }, [recentlyClicked]);
+  }, [recentlyClicked, props.history]);
 
   // set the focused portrait to the item the user selects, set recentlyClicked to
   // true so the count stops running

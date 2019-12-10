@@ -1,11 +1,17 @@
 import React from "react";
-import { HomePageContainer } from "./styles/homePage";
-import { Link } from "react-router-dom";
+import { HomePageContainer, LeftSideContainer } from "./styles/homePage";
+import SideBar from "./SideBar";
+import DisplayBox from "./DisplayBox";
+import TimeDateDisplay from "./TimeDateDisplay";
 
 export default function HomePage() {
   return (
     <HomePageContainer>
-      <Link to="/grid">To Portrait Grid Page</Link>
+      <SideBar />
+      <LeftSideContainer>
+        <DisplayBox />
+        <TimeDateDisplay></TimeDateDisplay>
+      </LeftSideContainer>
     </HomePageContainer>
   );
 }
