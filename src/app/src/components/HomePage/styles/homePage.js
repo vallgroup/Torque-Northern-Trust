@@ -9,15 +9,17 @@ export const SideBarContainer = styled.div`
   height: 100%;
   width: 200px;
   position: fixed;
-  right: 0;
+  right: 50px;
   text-align: right;
-  background: red;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const DisplayContainer = styled.div`
-  height: 40%;
-  width: 600px;
+  height: 55%;
+  width: 45%;
   border: 6px solid #ae9132;
+  background-color: rgba(0, 0, 0, 0.2);
 `;
 
 export const LeftSideContainer = styled.div`
@@ -25,7 +27,12 @@ export const LeftSideContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: start;
   margin-left: 100px;
 `;
 
-export const TimeDateContainer = styled.div``;
+export const TimeDateContainer = styled.div`
+  color: #ae9132;
+`;
+
+export const BottomDescriptionContainer = styled.div``;
