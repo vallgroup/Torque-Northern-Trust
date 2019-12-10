@@ -8,8 +8,6 @@ export default function GridPortrait({ portrait, onClick, index }) {
       onClick={() => onClick(index)}
     >
       <h1>{portrait.name}</h1>
-      {/* <img style={{ width: "100%" }} src={portrait.photo.url} alt="" /> */}
-      <h1>{portrait.url}</h1>
     </GridItem>
   );
 }

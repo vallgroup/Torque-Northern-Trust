@@ -29,6 +29,17 @@ export default function Grid(props) {
     }
   }, 5000);
 
+  useInterval(() => {
+    function goHome() {
+      props.history.push("/");
+    }
+    console.log("second interval running");
+
+    if (!recentlyClicked) {
+      return goHome();
+    }
+  }, 15000);
+
   // when the count increments, change the grid portrait that is in focus
   useEffect(() => {
     function timedFocus() {
@@ -37,33 +48,30 @@ export default function Grid(props) {
     return timedFocus();
   }, [count, gridData]);
 
-  // useEffect(() => {
-  //   function goHome() {
-  //     props.history.push("/");
-  //   }
-
-  //   console.log("going home effect");
-
-  //   const clearIt = () => {
-  //     clearTimeout(goHomeTimeout);
-  //   };
-
-  //   const goHomeTimeout = setTimeout(() => {
-  //     if (!recentlyClicked) {
-  //       goHome();
-  //       // clearIt();
-  //     } else if (recentlyClicked) {
-  //       clearIt();
-  //     }
-  //   }, 7000);
-  // });
+  useEffect(() => {
+    // send user to homepage
+    function goHome() {
+      props.history.push("/");
+    }
+    // if the page has not been recently clicked, send the user home in 10 seconds
+    let timeout = setTimeout(() => {
+      if (!recentlyClicked) {
+        goHome();
+      }
+    }, 10000);
+    // clear the timeout when recently clicked is set to true and then set recently clicked to false
+    return () => {
+      clearTimeout(timeout);
+      timeout = null;
+      setRecentlyClicked(false);
+    };
+  }, [recentlyClicked]);
 
   // set the focused portrait to the item the user selects, set recentlyClicked to
   // true so the count stops running
   const changeFocus = index => {
     setCount(index);
     setRecentlyClicked(true);
-    // setRecentlyClicked(false);
   };
 
   return (
