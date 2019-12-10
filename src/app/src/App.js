@@ -7,7 +7,7 @@ import HomePage from "./components/HomePage/HomePage";
 function App(props) {
   return (
     <div className="App">
-      <Route exact path="/" render={props => <HomePage />} />
+      <Route exact path="/" render={props => <HomePage {...props} />} />
       <Route
         exact
         path="/grid"

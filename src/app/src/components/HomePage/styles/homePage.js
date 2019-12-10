@@ -15,6 +15,8 @@ export const SideBarContainer = styled.div`
   flex-direction: column;
 `;
 
+export const MenuItemContainer = styled.div``;
+
 export const DisplayContainer = styled.div`
   height: 55%;
   width: 45%;

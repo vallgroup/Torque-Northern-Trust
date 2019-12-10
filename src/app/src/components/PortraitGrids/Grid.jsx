@@ -7,6 +7,7 @@ import { data } from "./data";
 
 export default function Grid(props) {
   const { gridType } = props;
+  console.log("rendering");
 
   let gridData = [];
   // if gridType prop is portrait, the dummy data to gridData
@@ -19,15 +20,6 @@ export default function Grid(props) {
   const [recentlyClicked, setRecentlyClicked] = useState(false);
 
   // setInterval hook
-  useInterval(() => {
-    // increment the counter if the counter is less than 22 and the page has not been interacted with recently
-    if (count < 22 && !recentlyClicked) {
-      setCount(count + 1);
-      // reset count to 0 when counter reaches 22 and the page has not been interacted with recently
-    } else if (count === 22 && !recentlyClicked) {
-      setCount(0);
-    }
-  }, 5000);
 
   // when the count increments, change the grid portrait that is in focus
   useEffect(() => {
@@ -36,6 +28,21 @@ export default function Grid(props) {
     }
     return timedFocus();
   }, [count, gridData]);
+
+  useInterval(
+    () => {
+      // increment the counter if the counter is less than 22 and the page has not been interacted with recently
+      if (count < 22 && !recentlyClicked) {
+        setCount(count + 1);
+        // reset count to 0 when counter reaches 22 and the page has not been interacted with recently
+      } else if (count === 22 && !recentlyClicked) {
+        setCount(0);
+      }
+    },
+    5000,
+    // useInterval will check to see if this is true, if it is, it will clear the interval
+    recentlyClicked
+  );
 
   useEffect(() => {
     // send user to homepage
@@ -47,7 +54,8 @@ export default function Grid(props) {
       if (!recentlyClicked) {
         goHome();
       }
-    }, 10000);
+    }, 15000);
+
     // clear the timeout when recently clicked is set to true and then set recently clicked to false
     return () => {
       clearTimeout(timeout);

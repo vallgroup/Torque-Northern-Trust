@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 
-export function useInterval(callback, delay) {
+// Taken from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+
+export function useInterval(callback, delay, condition) {
   const savedCallback = useRef();
 
   // Remember the latest callback.
@@ -15,7 +17,11 @@ export function useInterval(callback, delay) {
     }
     if (delay !== null) {
       let id = setInterval(tick, delay);
+      // checking to see if condition is met then clearing interval so interval stops
+      if (condition) {
+        clearInterval(id);
+      }
       return () => clearInterval(id);
     }
-  }, [delay]);
+  }, [delay, condition]);
 }
