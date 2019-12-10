@@ -7,7 +7,6 @@ import { data } from "./data";
 
 export default function Grid(props) {
   const { gridType } = props;
-  console.log("rendering");
 
   let gridData = [];
   // if gridType prop is portrait, the dummy data to gridData
@@ -40,7 +39,7 @@ export default function Grid(props) {
       }
     },
     5000,
-    // useInterval will check to see if this is true, if it is, it will clear the interval
+    // useInterval will check to see if recentlyClicked is true, if it is, it will clear the interval
     recentlyClicked
   );
 
