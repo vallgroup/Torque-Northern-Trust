@@ -11,6 +11,7 @@ class TQNT_Events_CPT {
     'menu_icon'           => 'dashicons-calendar-alt',
     'show_in_rest'        => true,
     // more args here
+    'show_in_nav_menus' => true,
   );
 
   private $cpt = null;
