@@ -27,9 +27,17 @@ export const FocusedPortaitContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  border: 1px solid white;
 `;
 
 export const GridIconOverlay = styled.div`
   height: 100%;
   width: 100%;
+  transition: background-color 500ms;
+  color: white;
+`;
+
+export const Icon = styled.img`
+  height: 100px;
+  width: 100px;
 `;

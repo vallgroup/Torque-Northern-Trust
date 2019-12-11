@@ -1,9 +1,11 @@
 import React from "react";
-import { GridItem, GridIconOverlay } from "./styles/GridStyle";
+import { GridItem, GridIconOverlay, Icon } from "./styles/GridStyle";
 
 export default function GridIcon({ icon, onClick, index }) {
   let background_color;
 
+  // Check to see what background color is served from the API,
+  // assign the background color with rgba values
   switch (icon.background_color) {
     case "turquoise":
       background_color = `rgba(64, 224, 208, 0.5)`;
@@ -26,7 +28,7 @@ export default function GridIcon({ icon, onClick, index }) {
 
   return (
     <GridItem
-      style={{ backgroundImage: `url(${icon.icon.url})` }}
+      style={{ backgroundImage: `url(${icon.background_image.url})` }}
       onClick={() => onClick(index)}
     >
       <GridIconOverlay
@@ -34,7 +36,7 @@ export default function GridIcon({ icon, onClick, index }) {
           backgroundColor: background_color
         }}
       >
-        <img src="" alt="" />
+        <Icon src={icon.icon.url} alt="icon" />
         <h1>{icon.title}</h1>
       </GridIconOverlay>
     </GridItem>

@@ -48,25 +48,25 @@ export default function Grid(props) {
     recentlyClicked
   );
 
-  // useEffect(() => {
-  //   // send user to homepage
-  //   function goHome() {
-  //     props.history.push("/");
-  //   }
-  //   // if the page has not been recently clicked, send the user home in 10 seconds
-  //   let timeout = setTimeout(() => {
-  //     if (!recentlyClicked) {
-  //       goHome();
-  //     }
-  //   }, 15000);
+  useEffect(() => {
+    // send user to homepage
+    function goHome() {
+      props.history.push("/");
+    }
+    // if the page has not been recently clicked, send the user home in 10 seconds
+    let timeout = setTimeout(() => {
+      if (!recentlyClicked) {
+        goHome();
+      }
+    }, 15000);
 
-  //   // clear the timeout when recently clicked is set to true and then set recently clicked to false
-  //   return () => {
-  //     clearTimeout(timeout);
-  //     timeout = null;
-  //     setRecentlyClicked(false);
-  //   };
-  // }, [recentlyClicked, props.history]);
+    // clear the timeout when recently clicked is set to true and then set recently clicked to false
+    return () => {
+      clearTimeout(timeout);
+      timeout = null;
+      setRecentlyClicked(false);
+    };
+  }, [recentlyClicked, props.history]);
 
   // set the focused portrait to the item the user selects, set recentlyClicked to
   // true so the count stops running
