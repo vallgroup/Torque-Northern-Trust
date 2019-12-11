@@ -556,7 +556,7 @@ export const iconData = {
             "2048x2048-height": 629
           }
         },
-        background_color: "red",
+        background_color: "orange",
         content: "<p>This is some kind of content</p>\n"
       },
       {

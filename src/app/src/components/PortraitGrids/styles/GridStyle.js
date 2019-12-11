@@ -15,6 +15,7 @@ export const GridItem = styled.div`
   border: 1px solid white;
   height: 100%;
   width: 100%;
+  color: white;
 `;
 
 export const FocusedPortaitContainer = styled.div`
@@ -31,5 +32,4 @@ export const FocusedPortaitContainer = styled.div`
 export const GridIconOverlay = styled.div`
   height: 100%;
   width: 100%;
-  opacity: 1;
 `;
