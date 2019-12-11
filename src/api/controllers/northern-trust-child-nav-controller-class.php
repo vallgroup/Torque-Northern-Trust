@@ -19,9 +19,23 @@ class TQNT_Nav_Controller {
 
 	protected $params = array();
 
+	// holds menu objects for menus created
+	protected $nav_menus = array();
+
+	// holds params to keep
+	protected $keep_params = array(
+		'ID' => 'id',
+		'post_title' => 'title',
+		'post_name' => 'slug',
+		'post_status' => 'status',
+		'post_type' => 'post_type',
+	);
+
 	function __construct( $request ) {
 		$this->request = $request;
 		$this->params = $this->request->get_params();
+
+		$this->nav_menus = wp_get_nav_menus();
 	}
 
 	public function get_nav() {
@@ -43,31 +57,43 @@ class TQNT_Nav_Controller {
 		}
 	}
 
+	public function get_navs_avail() {
+		return Torque_API_Responses::Success_Response( array(
+			'navs' => $this->nav_menus
+		) );
+	}
+
 	private function get_nav_data() {
+		// get nav items based on slug provided
 		$_nav_items = wp_get_nav_menu_items( $this->params['slug'] );
-
-		if ( $_nav_items ) {
-			$_keep_params = array(
-				'ID' => 'id',
-				'post_title' => 'title',
-				'post_name' => 'slug',
-				'menu_order' => 'order',
-				'object_id' => 'page_id',
-			);
-
-			$_formatted_nav_items = [];
-
-			foreach (	$_nav_items as $nav_item ) {
-				$_params_to_keep = [];
-				foreach ($_keep_params as $key => $param ) {
-					$_params_to_keep[$param] = $nav_item->{$key};
-				}
-				$_formatted_nav_items[] = $_params_to_keep;
-			}
-
-			return $_formatted_nav_items;
-		} else {
+// var_dump($_nav_items);
+		// if false, bail early
+		if ( ! $_nav_items ) {
 			return false;
 		}
+
+		$_formatted_nav_items = $this->build_nav_items( $_nav_items );
+
+		return $_formatted_nav_items;
+	}
+
+	private function build_nav_items( $items = array() ) {
+		$__items = [];
+		foreach (	$items as $nav_item ) {
+			$_item = get_post( $nav_item->object_id, 'object', 'db' );
+			// var_dump($_item);
+			$__items[] = $this->get_formatted_items( $_item );
+		}
+		return $__items;
+	}
+
+	private function get_formatted_items( $item = null ) {
+		if ( ! $item ) return array();
+
+		$formatted = [];
+		foreach ( $this->keep_params as $key => $param ) {
+			$formatted[ $param ] = $item->{$key};
+		}
+		return $formatted;
 	}
 }
