@@ -12,7 +12,9 @@ export const GridItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid white;
+  height: 100%;
+  width: 100%;
 `;
 
 export const FocusedPortaitContainer = styled.div`
@@ -24,4 +26,10 @@ export const FocusedPortaitContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+`;
+
+export const GridIconOverlay = styled.div`
+  height: 100%;
+  width: 100%;
+  opacity: 1;
 `;

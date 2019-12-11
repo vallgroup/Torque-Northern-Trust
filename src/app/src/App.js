@@ -13,6 +13,11 @@ function App(props) {
         path="/grid"
         render={props => <Grid gridType="portrait" {...props} />}
       />
+      <Route
+        exact
+        path="/icon-grid"
+        render={props => <Grid gridType="icon" {...props} />}
+      />
     </div>
   );
 }
