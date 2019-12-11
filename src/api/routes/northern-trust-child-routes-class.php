@@ -55,7 +55,7 @@ class TQNT_Routes {
   	  )
     );
 
-    // register event
+    // register nav
     register_rest_route(
       $this->namespace,
       '/nav/(?P<slug>[a-zA-Z0-9-_]+)', // resource
@@ -64,6 +64,17 @@ class TQNT_Routes {
   	  		'methods'  => 'GET',
   	  		'callback' => array( $this, 'get_nav' ),
   	  		'args'     => TQNT_Nav_Controller::get_nav_args(),
+  	  	),
+  	  )
+    );
+    //
+    register_rest_route(
+      $this->namespace,
+      '/navs-available', // resource
+      array( // Valid methods
+  	  	array(
+  	  		'methods'  => 'GET',
+  	  		'callback' => array( $this, 'get_navs_avail' ),
   	  	),
   	  )
     );
@@ -87,6 +98,11 @@ class TQNT_Routes {
   public function get_nav( $request ) {
     $page_controller = new TQNT_Nav_Controller( $request );
     return $page_controller->get_nav();
+  }
+
+  public function get_navs_avail( $request ) {
+    $page_controller = new TQNT_Nav_Controller( $request );
+    return $page_controller->get_navs_avail();
   }
 }
 
