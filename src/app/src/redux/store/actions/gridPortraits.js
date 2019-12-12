@@ -1,5 +1,4 @@
 export const SET_GRID_PORTRAITS = "SET_GRID_PORTRAITS";
-export const UPDATE_ALBUMS = "UPDATE_ALBUMS";
 
 export function setGridPortraits({ payload = {} }) {
   return {
