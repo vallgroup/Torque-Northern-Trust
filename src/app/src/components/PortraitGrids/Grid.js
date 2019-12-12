@@ -7,10 +7,10 @@ import { data } from "./data/data";
 import { iconData } from "./data/iconData";
 import GridIcon from "./GridIcon";
 import FocusedIcon from "./FocusedIcon";
+import { useHistory } from "react-router-dom";
 
-export default function Grid(props) {
-  const { gridType } = props;
-
+export default function Grid({ gridType }) {
+  const history = useHistory();
   let gridData = [];
   // if gridType prop is portrait, the dummy data to gridData
   // this will be changed to proper http requests when available
@@ -51,7 +51,7 @@ export default function Grid(props) {
   useEffect(() => {
     // send user to homepage
     function goHome() {
-      props.history.push("/");
+      history.push("/");
     }
     // if the page has not been recently clicked, send the user home in 10 seconds
     let timeout = setTimeout(() => {
@@ -66,7 +66,7 @@ export default function Grid(props) {
       timeout = null;
       setRecentlyClicked(false);
     };
-  }, [recentlyClicked, props.history]);
+  }, [recentlyClicked, history]);
 
   // set the focused portrait to the item the user selects, set recentlyClicked to
   // true so the count stops running
@@ -93,7 +93,7 @@ export default function Grid(props) {
             return (
               <GridIcon key={i} icon={item} index={i} onClick={changeFocus} />
             );
-          }
+          } else return null;
         })}
       {gridType === "portrait" ? (
         <FocusedPortrait portrait={focusedItem} />

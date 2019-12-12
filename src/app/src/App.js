@@ -1,24 +1,26 @@
 import React from "react";
-import "./App.css";
 import Grid from "./components/PortraitGrids/Grid";
-import { withRouter, Route } from "react-router-dom";
+import { withRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
+import { AppContainer } from "./styles/appStyles";
 
 function App(props) {
   return (
-    <div className="App">
-      <Route exact path="/" render={props => <HomePage {...props} />} />
-      <Route
-        exact
-        path="/grid"
-        render={props => <Grid gridType="portrait" {...props} />}
-      />
-      <Route
-        exact
-        path="/icon-grid"
-        render={props => <Grid gridType="icon" {...props} />}
-      />
-    </div>
+    <AppContainer>
+      <Switch>
+        <Route exact path="/" render={props => <HomePage {...props} />} />
+        <Route
+          exact
+          path="/grid"
+          render={props => <Grid gridType="portrait" {...props} />}
+        />
+        <Route
+          exact
+          path="/icon-grid"
+          render={props => <Grid gridType="icon" {...props} />}
+        />
+      </Switch>
+    </AppContainer>
   );
 }
 
