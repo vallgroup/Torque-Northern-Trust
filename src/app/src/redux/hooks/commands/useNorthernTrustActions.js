@@ -2,7 +2,9 @@ import { useDispatch } from "react-redux";
 import {
   setGridPortraits,
   setGridIcons,
-  apiRequest
+  apiRequest,
+  setMenuItems,
+  setEvents
 } from "../../store/actions";
 
 export function useNortherTrustActions() {
@@ -20,6 +22,14 @@ export function useNortherTrustActions() {
     );
   };
 
+  const onFetchGridPortraitsSuccess = gridPortraits => {
+    dispatch(setGridPortraits({ payload: gridPortraits }));
+  };
+
+  const fetchGridPortraitsError = error => {
+    console.log(error);
+  };
+
   const fetchGridIcons = () => {
     dispatch(
       apiRequest({
@@ -31,14 +41,6 @@ export function useNortherTrustActions() {
     );
   };
 
-  const onFetchGridPortraitsSuccess = gridPortraits => {
-    dispatch(setGridPortraits({ payload: gridPortraits }));
-  };
-
-  const fetchGridPortraitsError = error => {
-    console.log(error);
-  };
-
   const onFetchGridIconsSuccess = gridIcons => {
     dispatch(setGridIcons({ payload: gridIcons }));
   };
@@ -47,5 +49,43 @@ export function useNortherTrustActions() {
     console.log(error);
   };
 
-  return { fetchGridPortraits, fetchGridIcons };
+  const fetchMenuItems = () => {
+    dispatch(
+      apiRequest({
+        method: "GET",
+        url: `${nameSpace}/nav/menu-1`,
+        onSuccess: onFetchMenuItemsSuccess,
+        onError: fetchMenuItemsError
+      })
+    );
+  };
+
+  const onFetchMenuItemsSuccess = menuItems => {
+    dispatch(setMenuItems({ payload: menuItems }));
+  };
+
+  const fetchMenuItemsError = error => {
+    console.log(error);
+  };
+
+  const fetchEvents = () => {
+    dispatch(
+      apiRequest({
+        method: "GET",
+        url: `${nameSpace}/event/test`,
+        onSuccess: onFetchEventsSuccess,
+        onError: fetchEventsError
+      })
+    );
+  };
+
+  const onFetchEventsSuccess = events => {
+    dispatch(setEvents({ payload: events }));
+  };
+
+  const fetchEventsError = error => {
+    console.log(error);
+  };
+
+  return { fetchGridPortraits, fetchGridIcons, fetchMenuItems, fetchEvents };
 }

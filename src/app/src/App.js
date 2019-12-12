@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Grid from "./components/PortraitGrids/Grid";
 import { withRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";

@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { SideBarContainer } from "./styles/homePage";
-import { getMenuItems } from "../../apiHelpers/api";
 import MenuItem from "./MenuItem";
+import { useNortherTrustActions } from "../../redux/hooks/commands/useNorthernTrustActions";
+import { useMenuItems } from "../../redux/hooks/queries/useMenuItems";
 
 export default function SideBar(props) {
-  const [menuItems, setMenuItems] = useState([]);
+  const { fetchMenuItems } = useNortherTrustActions();
 
   useEffect(() => {
-    async function getContent() {
-      const resp = await getMenuItems();
-      setMenuItems(resp.nav);
-    }
-    getContent();
+    return fetchMenuItems();
   }, []);
+
+  const menuItems = useMenuItems();
 
   return (
     <SideBarContainer>
-      {!!menuItems.length &&
-        menuItems.map(item => (
+      {!!menuItems.success &&
+        menuItems.nav.map(item => (
           <MenuItem key={item.id} item={item} {...props} />
         ))}
     </SideBarContainer>
