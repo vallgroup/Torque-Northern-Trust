@@ -2,7 +2,7 @@ import { API_REQUEST } from "../actions/api";
 
 const API_URL = process.env.BASE_URL
   ? process.env.BASE_URL
-  : "http://localhost:8000/wp-json/northern-trust/v1";
+  : "http://localhost:8000/wp-json";
 
 export const api = ({ dispatch }) => next => action => {
   next(action);

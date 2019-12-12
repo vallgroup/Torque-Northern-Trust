@@ -9,7 +9,6 @@ export default function SideBar(props) {
   useEffect(() => {
     async function getContent() {
       const resp = await getMenuItems();
-      console.log(resp);
       setMenuItems(resp.nav);
     }
     getContent();
