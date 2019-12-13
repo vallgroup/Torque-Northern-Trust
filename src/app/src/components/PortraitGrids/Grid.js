@@ -3,19 +3,24 @@ import { GridContainer } from "./styles/GridStyle";
 import GridPortrait from "./GridPortrait";
 import { useInterval } from "../../hooks/useInterval";
 import FocusedPortrait from "./FocusedPortrait";
-import { data } from "./data";
+import { data } from "./data/data";
+import { iconData } from "./data/iconData";
+import GridIcon from "./GridIcon";
+import FocusedIcon from "./FocusedIcon";
+import { useHistory } from "react-router-dom";
 
-export default function Grid(props) {
-  const { gridType } = props;
-
+export default function Grid({ gridType }) {
+  const history = useHistory();
   let gridData = [];
   // if gridType prop is portrait, the dummy data to gridData
   // this will be changed to proper http requests when available
   if (gridType === "portrait") {
     gridData = data.grid.portraits;
+  } else if (gridType === "icon") {
+    gridData = iconData.grid.tiles;
   }
   const [count, setCount] = useState(0);
-  const [focusedPortait, setFocus] = useState(gridData[count]);
+  const [focusedItem, setFocus] = useState(gridData[count]);
   const [recentlyClicked, setRecentlyClicked] = useState(false);
 
   // setInterval hook
@@ -46,7 +51,7 @@ export default function Grid(props) {
   useEffect(() => {
     // send user to homepage
     function goHome() {
-      props.history.push("/");
+      history.push("/");
     }
     // if the page has not been recently clicked, send the user home in 10 seconds
     let timeout = setTimeout(() => {
@@ -61,7 +66,7 @@ export default function Grid(props) {
       timeout = null;
       setRecentlyClicked(false);
     };
-  }, [recentlyClicked, props.history]);
+  }, [recentlyClicked, history]);
 
   // set the focused portrait to the item the user selects, set recentlyClicked to
   // true so the count stops running
@@ -74,15 +79,27 @@ export default function Grid(props) {
     <GridContainer>
       {!!gridData.length &&
         // if there is data available in gridData, map through it and display each item
-        gridData.map((portrait, i) => (
-          <GridPortrait
-            key={i}
-            portrait={portrait}
-            index={i}
-            onClick={changeFocus}
-          />
-        ))}
-      <FocusedPortrait portrait={focusedPortait} />
+        gridData.map((item, i) => {
+          if (gridType === "portrait") {
+            return (
+              <GridPortrait
+                key={i}
+                portrait={item}
+                index={i}
+                onClick={changeFocus}
+              />
+            );
+          } else if (gridType === "icon") {
+            return (
+              <GridIcon key={i} icon={item} index={i} onClick={changeFocus} />
+            );
+          } else return null;
+        })}
+      {gridType === "portrait" ? (
+        <FocusedPortrait portrait={focusedItem} />
+      ) : (
+        <FocusedIcon icon={focusedItem} />
+      )}
     </GridContainer>
   );
 }
