@@ -3,6 +3,7 @@ import Grid from "./components/PortraitGrids/Grid";
 import { withRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import { AppContainer } from "./styles/appStyles";
+import EventsPage from "./components/Events/EventsPage";
 
 function App(props) {
   return (
@@ -19,6 +20,7 @@ function App(props) {
           path="/icon-grid"
           render={props => <Grid gridType="icon" {...props} />}
         />
+        <Route exact path="/events" render={props => <EventsPage />} />
       </Switch>
     </AppContainer>
   );
