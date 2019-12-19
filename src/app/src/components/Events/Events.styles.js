@@ -10,7 +10,6 @@ export const EventsPageContainer = styled.div`
 `;
 
 export const EventsDisplayContainer = styled.div`
-  height: 50%;
   width: 50%;
   margin-left: 100px;
   text-align: left;
@@ -20,4 +19,17 @@ export const Event = styled.div`
   border-style: solid;
   border-width: 5px 0 5px 0;
   border-color: white;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  margin-bottom: 5%;
+  justify-content: space-between;
+  width: 30%;
+`;
+
+export const EventButton = styled.div`
+  height: 35px;
+  width: 100px;
+  border: 3px solid white;
 `;

@@ -1,5 +1,10 @@
 import React from "react";
-import { EventsDisplayContainer, Event } from "./styles";
+import {
+  EventsDisplayContainer,
+  Event,
+  EventButton,
+  ButtonContainer
+} from "./Events.styles";
 
 export default function EventsDisplay() {
   const data = [1, 2, 3];
@@ -16,6 +21,10 @@ export default function EventsDisplay() {
           }
         >
           <h1>Title</h1>
+          <ButtonContainer>
+            <EventButton />
+            <EventButton />
+          </ButtonContainer>
         </Event>
       ))}
     </EventsDisplayContainer>
