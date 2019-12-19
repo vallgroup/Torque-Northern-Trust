@@ -4,6 +4,7 @@ import { apiRequest, API_REQUEST } from "./api";
 import { setMenuItems, SET_MENU_ITEMS } from "./menuItems";
 import { setEvents, SET_EVENTS } from "./events";
 import { SET_MAP_CONTENT, setMapContent } from "./map";
+import { setCurrentEvent, SET_CURRENT_EVENT } from "./currentEvent";
 
 export {
   setGridIcons,
@@ -17,5 +18,7 @@ export {
   setEvents,
   SET_EVENTS,
   setMapContent,
-  SET_MAP_CONTENT
+  SET_MAP_CONTENT,
+  setCurrentEvent,
+  SET_CURRENT_EVENT
 };

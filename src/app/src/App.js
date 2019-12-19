@@ -5,6 +5,7 @@ import HomePage from "./components/HomePage/HomePage";
 import { AppContainer } from "./styles/appStyles";
 import Events from "./components/Events/Events";
 import Footer from "./components/Footer/Footer";
+import VideoPage from "./components/Video/VideoPage";
 
 function App(props) {
   const location = useLocation();
@@ -23,6 +24,7 @@ function App(props) {
           render={props => <Grid gridType="icon" {...props} />}
         />
         <Route exact path="/events" render={props => <Events />} />
+        <Route exact path="/presentation" render={() => <VideoPage />} />
       </Switch>
       {location.pathname !== "/" && <Footer />}
     </AppContainer>
