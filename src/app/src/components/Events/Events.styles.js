@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const EventsPageContainer = styled.div`
+export const EventsPage = styled.div`
   height: 100%;
   width: 100vw;
   background-color: rgb(174, 145, 50);

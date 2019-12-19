@@ -3,7 +3,7 @@ import Grid from "./components/PortraitGrids/Grid";
 import { withRouter, Route, Switch, useLocation } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import { AppContainer } from "./styles/appStyles";
-import EventsPage from "./components/Events/EventsPage";
+import Events from "./components/Events/Events";
 import Footer from "./components/Footer/Footer";
 
 function App(props) {
@@ -22,7 +22,7 @@ function App(props) {
           path="/icon-grid"
           render={props => <Grid gridType="icon" {...props} />}
         />
-        <Route exact path="/events" render={props => <EventsPage />} />
+        <Route exact path="/events" render={props => <Events />} />
       </Switch>
       {location.pathname !== "/" && <Footer />}
     </AppContainer>
