@@ -1,6 +1,23 @@
 import React from "react";
-import { EventsDisplayContainer } from "./styles";
+import { EventsDisplayContainer, Event } from "./styles";
 
 export default function EventsDisplay() {
-  return <EventsDisplayContainer></EventsDisplayContainer>;
+  const data = [1, 2, 3];
+  return (
+    <EventsDisplayContainer>
+      {data.map((event, i) => (
+        <Event
+          style={
+            i === 0
+              ? { borderBottom: "none" }
+              : i === data.length - 1
+              ? { borderTop: "none" }
+              : null
+          }
+        >
+          <h1>Title</h1>
+        </Event>
+      ))}
+    </EventsDisplayContainer>
+  );
 }
