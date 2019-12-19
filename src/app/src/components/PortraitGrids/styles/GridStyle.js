@@ -38,6 +38,6 @@ export const GridIconOverlay = styled.div`
 `;
 
 export const Icon = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 `;
