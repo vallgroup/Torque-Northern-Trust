@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.div`
   width: 100%;
-  height: 10%;
+  height: 16.3%;
   background-color: grey;
   position: absolute;
   bottom: 0;
