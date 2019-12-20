@@ -5,10 +5,10 @@ import DisplayBox from "./DisplayBox";
 import TimeDateDisplay from "./TimeDateDisplay";
 import BottomDescription from "./BottomDescription";
 
-export default function HomePage(props) {
+export default function HomePage() {
   return (
     <HomePageContainer>
-      <SideBar {...props} />
+      <SideBar />
       <LeftSideContainer>
         <DisplayBox />
         <TimeDateDisplay />

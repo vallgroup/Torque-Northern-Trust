@@ -52,5 +52,3 @@ export default function Events() {
     </EventsPage>
   );
 }
-
-// ${event.presentation[0].video_url}

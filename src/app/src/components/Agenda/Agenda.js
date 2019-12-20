@@ -8,6 +8,7 @@ export default function Agenda() {
   const history = useHistory();
   let agenda;
   let contentType;
+
   if (!!currentEvent.agenda && !!currentEvent.agenda[0].content) {
     agenda = currentEvent.agenda[0].content;
     contentType = "content";
@@ -18,6 +19,7 @@ export default function Agenda() {
     agenda = null;
     history.goBack();
   }
+
   if (contentType === "file") {
     return (
       <AgendaPage>

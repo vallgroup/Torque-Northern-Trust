@@ -5,7 +5,7 @@ import HomePage from "./components/HomePage/HomePage";
 import { AppContainer } from "./styles/appStyles";
 import Events from "./components/Events/Events";
 import Footer from "./components/Footer/Footer";
-import VideoPage from "./components/Presentation/VideoPage";
+import Presentation from "./components/Presentation/Presentation";
 import Agenda from "./components/Agenda/Agenda";
 
 function App(props) {
@@ -13,7 +13,7 @@ function App(props) {
   return (
     <AppContainer>
       <Switch>
-        <Route exact path="/" render={props => <HomePage {...props} />} />
+        <Route exact path="/" render={() => <HomePage />} />
         <Route
           exact
           path="/grid"
@@ -24,8 +24,8 @@ function App(props) {
           path="/icon-grid"
           render={props => <Grid gridType="icon" {...props} />}
         />
-        <Route exact path="/events" render={props => <Events />} />
-        <Route exact path="/presentation" render={() => <VideoPage />} />
+        <Route exact path="/events" render={() => <Events />} />
+        <Route exact path="/presentation" render={() => <Presentation />} />
         <Route exact path="/agenda" render={() => <Agenda />} />
       </Switch>
       {location.pathname !== "/" && <Footer />}
