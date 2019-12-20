@@ -1,5 +1,5 @@
 import React from "react";
-import { HomePageContainer, LeftSideContainer } from "./styles/homePage";
+import { HomePageContainer, LeftSideContainer } from "./Home.styles";
 import SideBar from "./SideBar";
 import DisplayBox from "./DisplayBox";
 import TimeDateDisplay from "./TimeDateDisplay";

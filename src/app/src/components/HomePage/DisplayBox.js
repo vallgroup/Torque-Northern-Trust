@@ -3,7 +3,7 @@ import {
   DisplayContainer,
   DisplayBoxTitle,
   DisplayInnerContainer
-} from "./styles/homePage";
+} from "./Home.styles";
 
 export default function DisplayBox() {
   return (

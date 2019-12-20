@@ -1,5 +1,5 @@
 import React from "react";
-import { TimeDateContainer } from "./styles/homePage";
+import { TimeDateContainer } from "./Home.styles";
 
 export default function TimeDateDisplay() {
   return (

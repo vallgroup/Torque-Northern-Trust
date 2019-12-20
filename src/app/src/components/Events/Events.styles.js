@@ -32,4 +32,7 @@ export const EventButton = styled.div`
   height: 35px;
   width: 100px;
   border: 3px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

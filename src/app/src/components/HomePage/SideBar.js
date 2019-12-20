@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { SideBarContainer } from "./styles/homePage";
+import { SideBarContainer } from "./Home.styles";
 import MenuItem from "./MenuItem";
 import { useNortherTrustActions } from "../../redux/hooks/commands/useNorthernTrustActions";
 import { useMenuItems } from "../../redux/hooks/queries/useMenuItems";

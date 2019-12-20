@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuItemContainer } from "./styles/homePage";
+import { MenuItemContainer } from "./Home.styles";
 import { useHistory } from "react-router-dom";
 
 export default function MenuItem({ item }) {

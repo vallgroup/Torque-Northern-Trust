@@ -39,6 +39,9 @@ export const DisplayBoxTitle = styled.div`
   width: 40%;
   height: 50px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const LeftSideContainer = styled.div`
