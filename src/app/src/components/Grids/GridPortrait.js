@@ -1,5 +1,5 @@
 import React from "react";
-import { GridItem } from "./styles/GridStyle";
+import { GridItem } from "./Grid.style";
 
 export default function GridPortrait({ portrait, onClick, index }) {
   return (

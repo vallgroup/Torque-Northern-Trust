@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GridContainer } from "./styles/GridStyle";
+import { GridContainer } from "./Grid.style";
 import GridPortrait from "./GridPortrait";
 import { useInterval } from "../../hooks/useInterval";
 import FocusedPortrait from "./FocusedPortrait";

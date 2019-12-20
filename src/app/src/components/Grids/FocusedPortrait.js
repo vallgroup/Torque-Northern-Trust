@@ -1,5 +1,5 @@
 import React from "react";
-import { FocusedPortaitContainer } from "./styles/GridStyle";
+import { FocusedPortaitContainer } from "./Grid.style";
 
 export default function FocusedPortrait({ portrait }) {
   return (

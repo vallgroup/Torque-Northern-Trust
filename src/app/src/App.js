@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "./components/PortraitGrids/Grid";
+import Grid from "./components/Grids/Grid";
 import { withRouter, Route, Switch, useLocation } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import { AppContainer } from "./styles/appStyles";
