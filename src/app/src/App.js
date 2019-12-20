@@ -19,6 +19,7 @@ function App(props) {
         <Route exact path="/events" component={Events} />
         <Route exact path="/presentation" component={Presentation} />
         <Route exact path="/agenda" component={Agenda} />
+        <Route exact path="/map" component={Map} />
       </Switch>
       {location.pathname !== "/" && <Footer />}
     </AppContainer>
