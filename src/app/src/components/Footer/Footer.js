@@ -1,5 +1,5 @@
 import React from "react";
-import { FooterContainer, LeftFooterContent } from "./footerStyles";
+import { FooterContainer, LeftFooterContent } from "./Footer.styles";
 
 export default function Footer({ footerText }) {
   return (
