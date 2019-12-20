@@ -22,8 +22,13 @@ export default function Events() {
   const eventsData = useEvents();
   const { event } = eventsData;
 
-  const goToPresentations = event => {
+  const goToEventPresentation = event => {
     history.push(`/presentation`);
+    setCurrentEventAction(event);
+  };
+
+  const goToEventAgenda = event => {
+    history.push(`/agenda`);
     setCurrentEventAction(event);
   };
 
@@ -34,10 +39,10 @@ export default function Events() {
           <Event>
             <h1>{event.title}</h1>
             <ButtonContainer>
-              <EventButton onClick={() => goToPresentations(event)}>
+              <EventButton onClick={() => goToEventPresentation(event)}>
                 Presentation
               </EventButton>
-              <EventButton onClick={() => history.push("/agenda")}>
+              <EventButton onClick={() => goToEventAgenda(event)}>
                 Agenda
               </EventButton>
             </ButtonContainer>

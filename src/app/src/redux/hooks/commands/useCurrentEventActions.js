@@ -6,7 +6,6 @@ export function useCurrentEventActions() {
 
   const setCurrentEventAction = event => {
     dispatch(setCurrentEvent({ payload: event }));
-    console.log("ashdbaisb");
   };
   return { setCurrentEventAction };
 }
