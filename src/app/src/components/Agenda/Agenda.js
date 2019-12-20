@@ -35,7 +35,7 @@ export default function Agenda() {
   } else {
     return (
       <AgendaPage>
-        <div>{agenda}</div>
+        <div dangerouslySetInnerHTML={{ __html: agenda }} />
       </AgendaPage>
     );
   }

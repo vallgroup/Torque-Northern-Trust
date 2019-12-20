@@ -40,7 +40,7 @@ export default function FocusedIcon({ icon }) {
       >
         <Icon src={icon.icon.url} alt="icon" />
         <h1>{icon.title}</h1>
-        {icon.content}
+        <div dangerouslySetInnerHTML={{ __html: icon.content }} />
       </GridIconOverlay>
     </FocusedPortaitContainer>
   );
