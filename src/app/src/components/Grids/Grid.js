@@ -7,16 +7,18 @@ import { data } from "./data/data";
 import { iconData } from "./data/iconData";
 import GridIcon from "./GridIcon";
 import FocusedIcon from "./FocusedIcon";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 export default function Grid({ gridType }) {
   const history = useHistory();
+  const location = useLocation().pathname;
+
   let gridData = [];
   // if gridType prop is portrait, the dummy data to gridData
   // this will be changed to proper http requests when available
-  if (gridType === "portrait") {
+  if (location === "/grid") {
     gridData = data.grid.portraits;
-  } else if (gridType === "icon") {
+  } else if (location === "/icon-grid") {
     gridData = iconData.grid.tiles;
   }
   const [count, setCount] = useState(0);
@@ -80,7 +82,7 @@ export default function Grid({ gridType }) {
       {!!gridData.length &&
         // if there is data available in gridData, map through it and display each item
         gridData.map((item, i) => {
-          if (gridType === "portrait") {
+          if (location === "/grid") {
             return (
               <GridPortrait
                 key={i}
@@ -89,13 +91,13 @@ export default function Grid({ gridType }) {
                 onClick={changeFocus}
               />
             );
-          } else if (gridType === "icon") {
+          } else if (location === "/icon-grid") {
             return (
               <GridIcon key={i} icon={item} index={i} onClick={changeFocus} />
             );
           } else return null;
         })}
-      {gridType === "portrait" ? (
+      {location === "/grid" ? (
         <FocusedPortrait portrait={focusedItem} />
       ) : (
         <FocusedIcon icon={focusedItem} />

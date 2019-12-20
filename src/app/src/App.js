@@ -13,20 +13,12 @@ function App(props) {
   return (
     <AppContainer>
       <Switch>
-        <Route exact path="/" render={() => <HomePage />} />
-        <Route
-          exact
-          path="/grid"
-          render={props => <Grid gridType="portrait" {...props} />}
-        />
-        <Route
-          exact
-          path="/icon-grid"
-          render={props => <Grid gridType="icon" {...props} />}
-        />
-        <Route exact path="/events" render={() => <Events />} />
-        <Route exact path="/presentation" render={() => <Presentation />} />
-        <Route exact path="/agenda" render={() => <Agenda />} />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/grid" component={Grid} />
+        <Route exact path="/icon-grid" component={Grid} />
+        <Route exact path="/events" component={Events} />
+        <Route exact path="/presentation" component={Presentation} />
+        <Route exact path="/agenda" component={Agenda} />
       </Switch>
       {location.pathname !== "/" && <Footer />}
     </AppContainer>
