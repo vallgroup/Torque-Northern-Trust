@@ -27,6 +27,10 @@ export const DisplayContainer = styled.div`
   border: 4px solid #bc9c36;
   background-color: rgba(0, 0, 0, 0.2);
   text-align: left;
+  position: relative;
+  top: 22%;
+  left: 5%;
+  font-size: 2vw;
 `;
 
 export const DisplayInnerContainer = styled.div`
@@ -53,6 +57,13 @@ export const LeftSideContainer = styled.div`
 
 export const TimeDateContainer = styled.div`
   color: #bc9c36;
+  position: relative;
+  top: 22%;
+  left: 5%;
 `;
 
-export const BottomDescriptionContainer = styled.div``;
+export const BottomDescriptionContainer = styled.div`
+  position: relative;
+  top: 22%;
+  left: 5%;
+`;
