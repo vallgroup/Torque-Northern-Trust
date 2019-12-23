@@ -2,20 +2,21 @@ import styled from "styled-components";
 
 export const GridContainer = styled.div`
   width: 100%;
-  height: 90%;
+  height: 83.7%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
+  border: 4px solid white;
+  box-sizing: border-box;
 `;
 
 export const GridItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid white;
-  height: 100%;
-  width: 100%;
+  border: 4px solid white;
   color: white;
+  box-sizing: border-box;
 `;
 
 export const FocusedPortaitContainer = styled.div`
@@ -27,7 +28,8 @@ export const FocusedPortaitContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border: 1px solid white;
+  border: 4px solid white;
+  box-sizing: border-box;
 `;
 
 export const GridIconOverlay = styled.div`

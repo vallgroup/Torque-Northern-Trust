@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const EventsPage = styled.div`
-  height: 100%;
+  height: 83.7%;
   width: 100vw;
   background-color: rgb(174, 145, 50);
   display: flex;
