@@ -8,11 +8,10 @@ export const HomePageContainer = styled.div`
 `;
 
 export const SideBarContainer = styled.div`
-  height: 90%;
   width: 200px;
-  position: fixed;
-  right: 50px;
-  bottom: 0;
+  position: absolute;
+  right: 2.5%;
+  top: 22%;
   text-align: right;
   display: flex;
   flex-direction: column;
@@ -23,19 +22,20 @@ export const MenuItemContainer = styled.div`
 `;
 
 export const DisplayContainer = styled.div`
-  height: 55%;
-  width: 45%;
-  border: 6px solid #ae9132;
+  height: 50%;
+  width: 47%;
+  border: 4px solid #bc9c36;
   background-color: rgba(0, 0, 0, 0.2);
   text-align: left;
 `;
 
 export const DisplayInnerContainer = styled.div`
-  margin: 10% 100px 0 80px;
+  margin-top: 9.5%;
+  margin-left: 4.6%;
 `;
 
 export const DisplayBoxTitle = styled.div`
-  background: #ae9132;
+  background: #bc9c36;
   width: 40%;
   height: 50px;
   text-align: center;
@@ -45,16 +45,14 @@ export const DisplayBoxTitle = styled.div`
 `;
 
 export const LeftSideContainer = styled.div`
-  height: 95%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: start;
-  margin-left: 100px;
 `;
 
 export const TimeDateContainer = styled.div`
-  color: #ae9132;
+  color: #bc9c36;
 `;
 
 export const BottomDescriptionContainer = styled.div``;
