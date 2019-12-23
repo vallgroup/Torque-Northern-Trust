@@ -28,14 +28,10 @@ export default function GridIcon({ icon, onClick, index }) {
 
   return (
     <GridItem
-      style={{ backgroundImage: `url(${icon.background_image.url})` }}
+      backgroundImage={icon.background_image.url}
       onClick={() => onClick(index)}
     >
-      <GridIconOverlay
-        style={{
-          backgroundColor: background_color
-        }}
-      >
+      <GridIconOverlay backgroundColor={background_color}>
         <Icon src={icon.icon.url} alt="icon" />
         <h1>{icon.title}</h1>
       </GridIconOverlay>

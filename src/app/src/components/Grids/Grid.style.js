@@ -17,6 +17,7 @@ export const GridItem = styled.div`
   border: 4px solid white;
   color: white;
   box-sizing: border-box;
+  background-image: url(${props => props.backgroundImage});
 `;
 
 export const FocusedPortaitContainer = styled.div`
@@ -37,6 +38,7 @@ export const GridIconOverlay = styled.div`
   width: 100%;
   transition: background-color 500ms;
   color: white;
+  background-color: ${props => props.backgroundColor};
 `;
 
 export const Icon = styled.img`
