@@ -1,6 +1,12 @@
 import React from "react";
-import { MapPage } from "./Map.styles";
+import { MapPage, PointsOfInterest } from "./Map.styles";
+import { MapContainer } from "./Map.styles";
 
 export default function Map() {
-  return <MapPage></MapPage>;
+  return (
+    <MapPage>
+      <MapContainer></MapContainer>
+      <PointsOfInterest></PointsOfInterest>
+    </MapPage>
+  );
 }
