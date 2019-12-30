@@ -2,20 +2,23 @@ import React from "react";
 import {
   DisplayContainer,
   DisplayBoxTitle,
-  DisplayInnerContainer
+  DisplayInnerContainer,
+  P
 } from "./Home.styles";
+import styled from "styled-components";
+import posed from "react-pose";
 
 export default function DisplayBox() {
   return (
     <DisplayContainer>
       <DisplayInnerContainer>
         <DisplayBoxTitle>Content</DisplayBoxTitle>
-        <p>
+        <P>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel,
           similique iusto nihil illo voluptates nam quae ad adipisci dolores
           animi sequi! Accusantium dolore recusandae aut error aperiam rem
           laudantium odio!
-        </p>
+        </P>
       </DisplayInnerContainer>
     </DisplayContainer>
   );

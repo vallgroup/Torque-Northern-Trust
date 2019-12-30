@@ -7,6 +7,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  // position: ${props => props.position};
 `;
 
 export const LeftHeaderContent = styled.div`

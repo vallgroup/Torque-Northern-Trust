@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import posed from "react-pose";
 
 export const HomePageContainer = styled.div`
   height: 100vh;
@@ -67,3 +68,10 @@ export const BottomDescriptionContainer = styled.div`
   top: 22%;
   left: 5%;
 `;
+
+export const P = styled(
+  posed.p({
+    enter: { x: 0, opacity: 1 },
+    exit: { x: 50, opacity: 0 }
+  })
+)``;
