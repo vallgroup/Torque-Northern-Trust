@@ -10,6 +10,7 @@ import {
 } from "./Events.styles";
 import { useHistory } from "react-router-dom";
 import { useCurrentEventActions } from "../../redux/hooks/commands/useCurrentEventActions";
+import Header from "../Header/Header";
 
 export default function Events() {
   const { fetchEvents } = useNortherTrustActions();
@@ -33,22 +34,25 @@ export default function Events() {
   };
 
   return (
-    <EventsPage>
-      <EventsDisplayContainer>
-        {!!eventsData.success && (
-          <Event>
-            <h1>{event.title}</h1>
-            <ButtonContainer>
-              <EventButton onClick={() => goToEventPresentation(event)}>
-                Presentation
-              </EventButton>
-              <EventButton onClick={() => goToEventAgenda(event)}>
-                Agenda
-              </EventButton>
-            </ButtonContainer>
-          </Event>
-        )}
-      </EventsDisplayContainer>
-    </EventsPage>
+    <>
+      <Header />
+      <EventsPage>
+        <EventsDisplayContainer>
+          {!!eventsData.success && (
+            <Event>
+              <h1>{event.title}</h1>
+              <ButtonContainer>
+                <EventButton onClick={() => goToEventPresentation(event)}>
+                  Presentation
+                </EventButton>
+                <EventButton onClick={() => goToEventAgenda(event)}>
+                  Agenda
+                </EventButton>
+              </ButtonContainer>
+            </Event>
+          )}
+        </EventsDisplayContainer>
+      </EventsPage>
+    </>
   );
 }

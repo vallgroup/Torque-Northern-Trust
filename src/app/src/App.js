@@ -16,7 +16,6 @@ function App() {
       <Route
         render={({ location }) => (
           <>
-            <Header />
             <PoseGroup>
               <RouteContainer key={location.pathname}>
                 <Switch location={location}>

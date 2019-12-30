@@ -8,6 +8,7 @@ import { iconData } from "./data/iconData";
 import GridIcon from "./GridIcon";
 import FocusedIcon from "./FocusedIcon";
 import { useHistory, useLocation } from "react-router-dom";
+import Header from "../Header/Header";
 
 export default function Grid({ gridType }) {
   const history = useHistory();
@@ -78,30 +79,33 @@ export default function Grid({ gridType }) {
   };
 
   return (
-    <GridContainer>
-      {!!gridData.length &&
-        // if there is data available in gridData, map through it and display each item
-        gridData.map((item, i) => {
-          if (location === "/grid") {
-            return (
-              <GridPortrait
-                key={i}
-                portrait={item}
-                index={i}
-                onClick={changeFocus}
-              />
-            );
-          } else if (location === "/icon-grid") {
-            return (
-              <GridIcon key={i} icon={item} index={i} onClick={changeFocus} />
-            );
-          } else return null;
-        })}
-      {location === "/grid" ? (
-        <FocusedPortrait portrait={focusedItem} />
-      ) : (
-        <FocusedIcon icon={focusedItem} />
-      )}
-    </GridContainer>
+    <>
+      <Header />
+      <GridContainer>
+        {!!gridData.length &&
+          // if there is data available in gridData, map through it and display each item
+          gridData.map((item, i) => {
+            if (location === "/grid") {
+              return (
+                <GridPortrait
+                  key={i}
+                  portrait={item}
+                  index={i}
+                  onClick={changeFocus}
+                />
+              );
+            } else if (location === "/icon-grid") {
+              return (
+                <GridIcon key={i} icon={item} index={i} onClick={changeFocus} />
+              );
+            } else return null;
+          })}
+        {location === "/grid" ? (
+          <FocusedPortrait portrait={focusedItem} />
+        ) : (
+          <FocusedIcon icon={focusedItem} />
+        )}
+      </GridContainer>
+    </>
   );
 }
