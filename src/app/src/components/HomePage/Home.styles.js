@@ -5,7 +5,8 @@ export const HomePageContainer = styled.div`
   height: 100vh;
   width: 100vw;
   color: white;
-  background: grey;
+  background-image: url(${props => props.backgroundImage});
+  transition: background-image 1000ms;
 `;
 
 export const SideBarContainer = styled.div`
@@ -26,7 +27,7 @@ export const DisplayContainer = styled.div`
   height: 50%;
   width: 47%;
   border: 4px solid ${({ theme }) => theme.colors.gold};
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   text-align: left;
   position: relative;
   top: 22%;
