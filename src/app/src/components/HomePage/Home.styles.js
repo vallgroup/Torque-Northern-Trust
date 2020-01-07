@@ -7,6 +7,7 @@ export const HomePageContainer = styled.div`
   color: white;
   background-image: url(${props => props.backgroundImage});
   transition: background-image 1000ms;
+  background-size: cover;
 `;
 
 export const SideBarContainer = styled.div`
@@ -17,6 +18,17 @@ export const SideBarContainer = styled.div`
   text-align: right;
   display: flex;
   flex-direction: column;
+  font-size: 41pt;
+`;
+
+export const SideBarP = styled(
+  posed.p({
+    enter: { x: 0, opacity: 1 },
+    exit: { x: 50, opacity: 0 }
+  })
+)`
+  margin-bottom: 5px;
+  margin-top: 0;
 `;
 
 export const MenuItemContainer = styled.div`

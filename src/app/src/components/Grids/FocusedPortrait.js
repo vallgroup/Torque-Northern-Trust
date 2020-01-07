@@ -1,13 +1,21 @@
 import React from "react";
-import { FocusedPortaitContainer } from "./Grid.style";
+import {
+  FocusedPortaitContainer,
+  FocusedDescriptionContainer
+} from "./Grid.style";
 
 export default function FocusedPortrait({ portrait }) {
   return (
-    <FocusedPortaitContainer
-      style={{ backgroundImage: `url(${portrait.photo.url})` }}
-    >
-      <h1>{portrait.name}</h1>
-      <h1>{portrait.department}</h1>
+    <FocusedPortaitContainer backgroundImage={portrait.photo.url}>
+      <FocusedDescriptionContainer>
+        <h1>
+          {portrait.name}
+          <span>
+            {portrait.date_started}//{portrait.department}
+          </span>
+        </h1>
+        <h1>{portrait.tagline}</h1>
+      </FocusedDescriptionContainer>
     </FocusedPortaitContainer>
   );
 }

@@ -6,8 +6,6 @@ export default function GridPortrait({ portrait, onClick, index }) {
     <GridItem
       backgroundImage={portrait.photo.url}
       onClick={() => onClick(index)}
-    >
-      <h1>{portrait.name}</h1>
-    </GridItem>
+    ></GridItem>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuItemContainer } from "./Home.styles";
+import { MenuItemContainer, SideBarP } from "./Home.styles";
 import { useHistory } from "react-router-dom";
 
 export default function MenuItem({ item }) {
@@ -11,7 +11,7 @@ export default function MenuItem({ item }) {
   };
   return (
     <MenuItemContainer onClick={() => linkToSlug(slug)}>
-      {title}
+      <SideBarP>{title}</SideBarP>
     </MenuItemContainer>
   );
 }

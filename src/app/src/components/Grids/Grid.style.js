@@ -47,6 +47,21 @@ export const FocusedPortaitContainer = styled(
   background-size: cover;
   border: 4px solid white;
   box-sizing: border-box;
+  background-image: url(${props => props.backgroundImage});
+  display: flex;
+  align-items: flex-end;
+`;
+
+export const FocusedDescriptionContainer = styled(
+  posed.div({
+    enter: { x: 0, opacity: 1 },
+    exit: { x: 50, opacity: 0 }
+  })
+)`
+  border: 4px solid ${({ theme }) => theme.colors.gold};
+  color: ${({ theme }) => theme.colors.gold};
+  margin: 0 0 4.8611vh 2.1875vw;
+  text-align: left;
 `;
 
 export const GridIconOverlay = styled.div`
