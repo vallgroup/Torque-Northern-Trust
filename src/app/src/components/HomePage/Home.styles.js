@@ -25,7 +25,7 @@ export const MenuItemContainer = styled.div`
 export const DisplayContainer = styled.div`
   height: 50%;
   width: 47%;
-  border: 4px solid #bc9c36;
+  border: 4px solid ${({ theme }) => theme.colors.gold};
   background-color: rgba(0, 0, 0, 0.2);
   text-align: left;
   position: relative;
@@ -40,7 +40,7 @@ export const DisplayInnerContainer = styled.div`
 `;
 
 export const DisplayBoxTitle = styled.div`
-  background: #bc9c36;
+  background: ${({ theme }) => theme.colors.gold};
   width: 40%;
   height: 50px;
   text-align: center;
@@ -57,7 +57,7 @@ export const LeftSideContainer = styled.div`
 `;
 
 export const TimeDateContainer = styled.div`
-  color: #bc9c36;
+  color: ${({ theme }) => theme.colors.gold};
   position: relative;
   top: 22%;
   left: 5%;

@@ -5,8 +5,6 @@ import {
   DisplayInnerContainer,
   P
 } from "./Home.styles";
-import styled from "styled-components";
-import posed from "react-pose";
 
 export default function DisplayBox() {
   return (

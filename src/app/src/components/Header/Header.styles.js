@@ -1,13 +1,15 @@
 import styled from "styled-components";
+import top_banner from "../../assets/top_banner.jpg";
 
 export const HeaderContainer = styled.div`
   width: 100%;
   height: 16.3%;
-  background-color: grey;
+  // background-color: grey;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // position: ${props => props.position};
+  background-image: url(${top_banner});
+  background-size: cover;
 `;
 
 export const LeftHeaderContent = styled.div`
