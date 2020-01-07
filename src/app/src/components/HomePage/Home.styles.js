@@ -88,3 +88,9 @@ export const P = styled(
     exit: { x: 50, opacity: 0 }
   })
 )``;
+
+export const Logo = styled.img`
+  position: fixed;
+  top: 8.2vh;
+  left: 2.5vw;
+`;

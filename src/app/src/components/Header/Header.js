@@ -1,16 +1,24 @@
 import React from "react";
-import { HeaderContainer, LeftHeaderContent } from "./Header.styles";
-import { useLocation } from "react-router-dom";
+import {
+  HeaderContainer,
+  LeftHeaderContent,
+  Logo,
+  HomeButton
+} from "./Header.styles";
+import { useLocation, useHistory } from "react-router-dom";
+import home_button from "../../assets/home_button.svg";
+import nt_logo from "../../assets/nt_logo.svg";
 
 export default function Header({ headerText }) {
   const location = useLocation().pathname;
+  const history = useHistory();
   return (
     <HeaderContainer position={location === "/" ? "fixed" : null}>
       <LeftHeaderContent>
-        <h1>Logo</h1>
-        {location !== "/" && <h1>{headerText ? headerText : "HeaderText"}</h1>}
+        <Logo src={nt_logo} alt="" />
       </LeftHeaderContent>
-      {location !== "/" && <h1>HomeIcon</h1>}
+      {<h1>{headerText ? headerText : "HeaderText"}</h1>}
+      <HomeButton src={home_button} alt="" onClick={() => history.push("/")} />
     </HeaderContainer>
   );
 }

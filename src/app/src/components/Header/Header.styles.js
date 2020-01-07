@@ -17,3 +17,11 @@ export const LeftHeaderContent = styled.div`
   width: 20%;
   justify-content: space-between;
 `;
+
+export const Logo = styled.img`
+  margin-left: 2.5vw;
+`;
+
+export const HomeButton = styled.img`
+  margin-right: 2.5vw;
+`;

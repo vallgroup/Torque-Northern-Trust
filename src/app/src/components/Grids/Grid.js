@@ -61,7 +61,7 @@ export default function Grid({ gridType }) {
       if (!recentlyClicked) {
         goHome();
       }
-    }, 15000);
+    }, 20000);
 
     // clear the timeout when recently clicked is set to true and then set recently clicked to false
     return () => {

@@ -64,6 +64,13 @@ export const FocusedDescriptionContainer = styled(
   text-align: left;
 `;
 
+export const FocusedIconDescriptionContainer = styled(
+  posed.div({
+    enter: { opacity: 1 },
+    exit: { opacity: 0 }
+  })
+)``;
+
 export const GridIconOverlay = styled.div`
   height: 100%;
   width: 100%;
