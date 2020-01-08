@@ -13,6 +13,8 @@ export const GridContainer = styled(
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   border: 4px solid white;
+  border-right: 0;
+  border-left: 0;
   box-sizing: border-box;
 `;
 

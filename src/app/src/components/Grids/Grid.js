@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GridContainer } from "./Grid.style";
-import GridPortrait from "./GridPortrait";
+import { GridContainer, GridItem } from "./Grid.style";
 import { useInterval } from "../../hooks/useInterval";
 import FocusedPortrait from "./FocusedPortrait";
 import { data } from "./data/data";
@@ -61,7 +60,7 @@ export default function Grid({ gridType }) {
       if (!recentlyClicked) {
         goHome();
       }
-    }, 20000);
+    }, 200000);
 
     // clear the timeout when recently clicked is set to true and then set recently clicked to false
     return () => {
@@ -87,12 +86,11 @@ export default function Grid({ gridType }) {
           gridData.map((item, i) => {
             if (location === "/grid") {
               return (
-                <GridPortrait
+                <GridItem
                   key={i}
-                  portrait={item}
-                  index={i}
-                  onClick={changeFocus}
-                />
+                  onClick={() => changeFocus(i)}
+                  backgroundImage={item.photo.url}
+                ></GridItem>
               );
             } else if (location === "/icon-grid") {
               return (
