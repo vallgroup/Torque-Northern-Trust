@@ -85,3 +85,11 @@ export const Icon = styled.img`
   height: 50px;
   width: 50px;
 `;
+
+export const H1 = styled.div`
+  font-size: 37pt;
+`;
+
+export const Span = styled.span`
+  font-size: 23pt;
+`;
