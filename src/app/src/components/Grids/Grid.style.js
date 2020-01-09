@@ -64,6 +64,7 @@ export const FocusedDescriptionContainer = styled(
   color: ${({ theme }) => theme.colors.gold};
   margin: 0 0 4.8611vh 2.1875vw;
   text-align: left;
+  padding: 10px 50px 10px 50px;
 `;
 
 export const FocusedIconDescriptionContainer = styled(
@@ -71,7 +72,9 @@ export const FocusedIconDescriptionContainer = styled(
     enter: { opacity: 1 },
     exit: { opacity: 0 }
   })
-)``;
+)`
+  margin-left: 3.1vw;
+`;
 
 export const GridIconOverlay = styled.div`
   height: 100%;
@@ -88,6 +91,8 @@ export const Icon = styled.img`
 
 export const H1 = styled.div`
   font-size: 37pt;
+  margin-top: 20px;
+  margin-bottom: 5px;
 `;
 
 export const Span = styled.span`

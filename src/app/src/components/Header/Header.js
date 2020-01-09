@@ -3,7 +3,10 @@ import {
   HeaderContainer,
   LeftHeaderContent,
   Logo,
-  HomeButton
+  HomeButton,
+  Divider,
+  RightHeaderContent,
+  HeaderText
 } from "./Header.styles";
 import { useLocation, useHistory } from "react-router-dom";
 import home_button from "../../assets/home_button.svg";
@@ -17,8 +20,15 @@ export default function Header({ headerText }) {
       <LeftHeaderContent>
         <Logo src={nt_logo} alt="" />
       </LeftHeaderContent>
-      {<h1>{headerText ? headerText : "HeaderText"}</h1>}
-      <HomeButton src={home_button} alt="" onClick={() => history.push("/")} />
+      <RightHeaderContent>
+        <HeaderText>{headerText ? headerText : "HeaderText"}</HeaderText>
+        <Divider></Divider>
+        <HomeButton
+          src={home_button}
+          alt="home-button"
+          onClick={() => history.push("/")}
+        />
+      </RightHeaderContent>
     </HeaderContainer>
   );
 }
