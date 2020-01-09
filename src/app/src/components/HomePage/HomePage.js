@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 import DisplayBox from "./DisplayBox";
 import TimeDateDisplay from "./TimeDateDisplay";
 import BottomDescription from "./BottomDescription";
-import { backgroundData } from "./data";
+import { backgroundData, data } from "./data";
 import { useInterval } from "../../hooks/useInterval";
 
 export default function HomePage() {
@@ -20,11 +20,13 @@ export default function HomePage() {
     }
   }, 5000);
 
+  const homeContent = data;
+
   return (
     <HomePageContainer backgroundImage={backgroundData.images[count]}>
       <SideBar />
       <LeftSideContainer>
-        <DisplayBox />
+        <DisplayBox homeContent={homeContent} />
         <TimeDateDisplay />
         <BottomDescription />
       </LeftSideContainer>

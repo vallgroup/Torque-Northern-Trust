@@ -4,7 +4,8 @@ import {
   setGridIcons,
   apiRequest,
   setMenuItems,
-  setEvents
+  setEvents,
+  setHomeContent
 } from "../../store/actions";
 
 export function useNortherTrustActions() {
@@ -87,5 +88,30 @@ export function useNortherTrustActions() {
     console.log(error);
   };
 
-  return { fetchGridPortraits, fetchGridIcons, fetchMenuItems, fetchEvents };
+  const fetchHomeContent = () => {
+    dispatch(
+      apiRequest({
+        method: "GET",
+        url: `${nameSpace}/events`,
+        onSuccess: onFetchHomeContentSuccess,
+        onError: fetchHomeContentError
+      })
+    );
+  };
+
+  const onFetchHomeContentSuccess = homeContent => {
+    dispatch(setHomeContent({ payload: homeContent }));
+  };
+
+  const fetchHomeContentError = error => {
+    console.log(error);
+  };
+
+  return {
+    fetchGridPortraits,
+    fetchGridIcons,
+    fetchMenuItems,
+    fetchEvents,
+    fetchHomeContent
+  };
 }

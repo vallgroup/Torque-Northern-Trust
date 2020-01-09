@@ -17,8 +17,9 @@ export const EventsDisplayContainer = styled.div`
 
 export const Event = styled.div`
   border-style: solid;
-  border-width: 5px 0 5px 0;
+  border-width: 0 0 5px 0;
   border-color: white;
+  border-top: ${props => props.borderTop};
 `;
 
 export const ButtonContainer = styled.div`

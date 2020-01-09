@@ -6,17 +6,16 @@ import {
   P
 } from "./Home.styles";
 
-export default function DisplayBox() {
+export default function DisplayBox({ homeContent }) {
   return (
     <DisplayContainer>
       <DisplayInnerContainer>
-        <DisplayBoxTitle>Content</DisplayBoxTitle>
-        <P>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel,
-          similique iusto nihil illo voluptates nam quae ad adipisci dolores
-          animi sequi! Accusantium dolore recusandae aut error aperiam rem
-          laudantium odio!
-        </P>
+        <DisplayBoxTitle>{homeContent.resting_state.title}</DisplayBoxTitle>
+        <P
+          dangerouslySetInnerHTML={{
+            __html: homeContent.resting_state.content
+          }}
+        />
       </DisplayInnerContainer>
     </DisplayContainer>
   );

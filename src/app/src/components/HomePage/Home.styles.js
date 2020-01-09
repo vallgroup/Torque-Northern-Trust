@@ -54,9 +54,9 @@ export const DisplayInnerContainer = styled.div`
 
 export const DisplayBoxTitle = styled.h1`
   background: ${({ theme }) => theme.colors.gold};
-  width: 40%;
-  text-align: center;
   font-size: 65pt;
+  display: inline;
+  padding: 10px 30px 10px 30px;
 `;
 
 export const LeftSideContainer = styled.div`

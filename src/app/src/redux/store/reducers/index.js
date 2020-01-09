@@ -5,6 +5,7 @@ import { menuItemsReducer } from "./menuItems";
 import { eventsReducer } from "./events";
 import { mapReducer } from "./map";
 import { currentEventReducer } from "./currentEvent";
+import { homeContentReducer } from "./homeContent";
 
 export const rootReducer = combineReducers({
   gridPortraits: gridPortraitsReducer,
@@ -12,5 +13,6 @@ export const rootReducer = combineReducers({
   menuItems: menuItemsReducer,
   events: eventsReducer,
   mapContent: mapReducer,
-  currentEvent: currentEventReducer
+  currentEvent: currentEventReducer,
+  homeContent: homeContentReducer
 });

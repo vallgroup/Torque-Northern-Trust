@@ -11,6 +11,7 @@ import {
 import { useHistory } from "react-router-dom";
 import { useCurrentEventActions } from "../../redux/hooks/commands/useCurrentEventActions";
 import Header from "../Header/Header";
+import { data } from "./data";
 
 export default function Events() {
   const { fetchEvents } = useNortherTrustActions();
@@ -33,24 +34,28 @@ export default function Events() {
     setCurrentEventAction(event);
   };
 
+  // Using dummy data for now
+  const events = data;
+
   return (
     <>
       <Header />
       <EventsPage>
         <EventsDisplayContainer>
-          {!!eventsData.success && (
-            <Event>
-              <h1>{event.title}</h1>
-              <ButtonContainer>
-                <EventButton onClick={() => goToEventPresentation(event)}>
-                  Presentation
-                </EventButton>
-                <EventButton onClick={() => goToEventAgenda(event)}>
-                  Agenda
-                </EventButton>
-              </ButtonContainer>
-            </Event>
-          )}
+          {!!events.success &&
+            events.events.map((event, i) => (
+              <Event key={i} borderTop={i === 0 ? "5px solid white" : null}>
+                <h1>{event.title}</h1>
+                <ButtonContainer>
+                  <EventButton onClick={() => goToEventPresentation(event)}>
+                    Presentation
+                  </EventButton>
+                  <EventButton onClick={() => goToEventAgenda(event)}>
+                    Agenda
+                  </EventButton>
+                </ButtonContainer>
+              </Event>
+            ))}
         </EventsDisplayContainer>
       </EventsPage>
     </>
