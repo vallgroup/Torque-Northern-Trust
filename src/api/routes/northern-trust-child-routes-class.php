@@ -54,6 +54,17 @@ class TQNT_Routes {
   	  	),
   	  )
     );
+    // get all available events
+    register_rest_route(
+      $this->namespace,
+      '/events', // resource
+      array( // Valid methods
+  	  	array(
+  	  		'methods'  => 'GET',
+  	  		'callback' => array( $this, 'get_events' ),
+  	  	),
+  	  )
+    );
 
     // register nav
     register_rest_route(
@@ -93,6 +104,11 @@ class TQNT_Routes {
   public function get_event( $request ) {
     $page_controller = new TQNT_Events_Controller( $request );
     return $page_controller->get_event();
+  }
+
+  public function get_events( $request ) {
+    $page_controller = new TQNT_Events_Controller( $request );
+    return $page_controller->get_events();
   }
 
   public function get_nav( $request ) {

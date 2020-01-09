@@ -341,6 +341,73 @@ You should get a response like the following:
 }
 ```
 
+To make a request to get all published events, simply make a `GET` request to the following url:
+
+```
+GET http://localhost:8000/wp-json/northern-trust/v1/events
+```
+
+You should get a response like the following:
+
+```JSON
+{
+    "success": true,
+    "events": [
+        {
+            "id": 71,
+            "title": "Event 3",
+            "start_date": "25/01/2020 12:00 am",
+            "presentation": [
+                {
+                    "acf_fc_layout": "video",
+                    "video_url": "https://www.youtube.com/watch?v=aXH-QsPTeEI"
+                }
+            ],
+            "agenda": [
+                {
+                    "acf_fc_layout": "wysiwyg",
+                    "content": "<p>Event 3 agenda!</p>\n"
+                }
+            ]
+        },
+        {
+            "id": 70,
+            "title": "Event 2",
+            "start_date": "08/01/2020 12:00 am",
+            "presentation": [
+                {
+                    "acf_fc_layout": "video",
+                    "video_url": "https://www.youtube.com/watch?v=aXH-QsPTeEI"
+                }
+            ],
+            "agenda": [
+                {
+                    "acf_fc_layout": "wysiwyg",
+                    "content": "<p>Event 2 agenda&#8230;. </p>\n"
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "title": "Event",
+            "start_date": "10/12/2019 11:00 am",
+            "presentation": [
+                {
+                    "acf_fc_layout": "video",
+                    "video_url": "https://www.youtube.com/watch?v=nnEeu_1iKS0"
+                }
+            ],
+            "agenda": [
+                {
+                    "acf_fc_layout": "wysiwyg",
+                    "content": "<p>Event 1 agenda&#8230;</p>\n"
+                }
+            ]
+        }
+    ]
+}
+```
+
 ## Maps
 
 To make a request to get a maps, simply make a `GET` request to the following url:
