@@ -4,20 +4,21 @@ import SideBar from "./SideBar";
 import DisplayBox from "./DisplayBox";
 import TimeDateDisplay from "./TimeDateDisplay";
 import BottomDescription from "./BottomDescription";
-import { backgroundData, data } from "./data";
+import { data } from "./data";
 
 export default function HomePage() {
   const [count, setCount] = useState(0);
 
+  const backgroundData = data.resting_state.background_images;
   // On first render, randomly pick the background image
   useEffect(() => {
-    setCount(Math.floor(Math.random() * (backgroundData.images.length - 1)));
+    setCount(Math.floor(Math.random() * (backgroundData.length - 1)));
   }, []);
 
   const homeContent = data;
 
   return (
-    <HomePageContainer backgroundImage={backgroundData.images[count]}>
+    <HomePageContainer backgroundImage={backgroundData[count].url}>
       <SideBar />
       <LeftSideContainer>
         <DisplayBox homeContent={homeContent} />
