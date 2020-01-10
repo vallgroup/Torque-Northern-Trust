@@ -13,7 +13,7 @@ export default function FocusedPortrait({ portrait }) {
         <H1>
           {portrait.name}&nbsp;
           <Span>
-            {portrait.date_started}//{portrait.department}
+            {portrait.date_started}/{portrait.department}
           </Span>
         </H1>
         <Span>{portrait.tagline}</Span>
