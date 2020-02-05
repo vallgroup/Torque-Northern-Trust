@@ -10,6 +10,14 @@ export const HomePageContainer = styled.div`
   background-size: cover;
 `;
 
+export const HomePageLogo = styled.img`
+  position: fixed;
+  top: 7%;
+  left: 2%;
+  z-index: 9999;
+  width: 11vw;
+`;
+
 export const SideBarContainer = styled.div`
   width: 200px;
   position: absolute;

@@ -25,26 +25,31 @@ class TQNT_Resting_State_Controller extends TQNT_Object_Controller {
         ) );
 			}
 
-			return Torque_API_Responses::Failure_Response( array(
-				'message' => 'no resting state content was found.'
-			) );
-
 		} catch (Exception $e) {
 			return Torque_API_Responses::Error_Response( $e );
 		}
 	}
 
 	private function get_resting_state_data() {
-		
+
 		$_resting_state = array();
+
+		$_resting_state['background_images'] = $this->get_background_images();
+
+		$_resting_state['content'] = 'This is the content';
+
+		$_resting_state['weather'] = array( 'something' );
+
+		$_resting_state['feed'] = array( 'something' );
+
+		return $_resting_state;
+	}
+
+	private function get_background_images() {
 		$background_images = get_field('background_images', 'option');
 
 		if ( $background_images ) {
-			$_resting_state['background_images'] = $background_images;
-		}
-
-		if ( sizeof($_resting_state) > 0 ) {
-			return $_resting_state;
+			return $background_images;
 		} else {
 			return false;
 		}
