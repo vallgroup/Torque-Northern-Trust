@@ -29,6 +29,58 @@ class TQNT_ACF {
 
   public function acf_init() {
     // add content sections here
+    if( function_exists('acf_add_local_field_group') ):
+
+      acf_add_local_field_group(array(
+        'key' => 'group_5e17768b85965',
+        'title' => 'Resting State',
+        'fields' => array(
+          array(
+            'key' => 'field_5e17773b7023d',
+            'label' => 'Background Images',
+            'name' => 'background_images',
+            'type' => 'gallery',
+            'instructions' => 'Add one or more images, which will be used at random each time the homepage is loaded.',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+              'width' => '',
+              'class' => '',
+              'id' => '',
+            ),
+            'min' => '',
+            'max' => '',
+            'insert' => 'append',
+            'library' => 'all',
+            'min_width' => '',
+            'min_height' => '',
+            'min_size' => '',
+            'max_width' => '',
+            'max_height' => '',
+            'max_size' => '',
+            'mime_types' => '',
+          ),
+        ),
+        'location' => array(
+          array(
+            array(
+              'param' => 'options_page',
+              'operator' => '==',
+              'value' => 'acf-options',
+            ),
+          ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => 1,
+        'description' => '',
+      ));
+      
+    endif;
   }
 }
 
