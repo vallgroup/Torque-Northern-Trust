@@ -3,6 +3,7 @@
 require_once( get_template_directory() . '/api/permissions/torque-api-permissions-class.php');
 
 require_once( TQNT_API_ROOT . 'controllers/northern-trust-child-portrait-grid-controller-class.php');
+require_once( TQNT_API_ROOT . 'controllers/northern-trust-child-resting-state-controller-class.php');
 require_once( TQNT_API_ROOT . 'controllers/northern-trust-child-icon-grid-controller-class.php');
 require_once( TQNT_API_ROOT . 'controllers/northern-trust-child-events-controller-class.php');
 require_once( TQNT_API_ROOT . 'controllers/northern-trust-child-nav-controller-class.php');
@@ -16,6 +17,19 @@ class TQNT_Routes {
   }
 
   public function register_routes() {
+
+    // get resting state content
+    register_rest_route(
+      $this->namespace,
+      '/resting-state', // resource
+      array( // Valid methods
+  	  	array(
+  	  		'methods'  => 'GET',
+  	  		'callback' => array( $this, 'get_resting_state' ),
+  	  	),
+  	  )
+    );
+
     // register portrait grid
     register_rest_route(
       $this->namespace,
@@ -54,6 +68,17 @@ class TQNT_Routes {
   	  	),
   	  )
     );
+    // get all available events
+    register_rest_route(
+      $this->namespace,
+      '/events', // resource
+      array( // Valid methods
+  	  	array(
+  	  		'methods'  => 'GET',
+  	  		'callback' => array( $this, 'get_events' ),
+  	  	),
+  	  )
+    );
 
     // register nav
     register_rest_route(
@@ -80,6 +105,11 @@ class TQNT_Routes {
     );
   }
 
+  public function get_resting_state( $request ) {
+    $page_controller = new TQNT_Resting_State_Controller( $request );
+    return $page_controller->get_resting_state();
+  }
+
   public function get_portrait_grid( $request ) {
     $page_controller = new TQNT_Portrait_Grid_Controller( $request );
     return $page_controller->get_portrait_grid();
@@ -93,6 +123,11 @@ class TQNT_Routes {
   public function get_event( $request ) {
     $page_controller = new TQNT_Events_Controller( $request );
     return $page_controller->get_event();
+  }
+
+  public function get_events( $request ) {
+    $page_controller = new TQNT_Events_Controller( $request );
+    return $page_controller->get_events();
   }
 
   public function get_nav( $request ) {
