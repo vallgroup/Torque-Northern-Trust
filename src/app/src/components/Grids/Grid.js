@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { GridContainer } from "./styles/GridStyle";
-import GridPortrait from "./GridPortrait";
+import { GridContainer, GridItem } from "./Grid.style";
 import { useInterval } from "../../hooks/useInterval";
 import FocusedPortrait from "./FocusedPortrait";
 import { data } from "./data/data";
 import { iconData } from "./data/iconData";
 import GridIcon from "./GridIcon";
 import FocusedIcon from "./FocusedIcon";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import Header from "../Header/Header";
 
 export default function Grid({ gridType }) {
   const history = useHistory();
+  const location = useLocation().pathname;
+
   let gridData = [];
   // if gridType prop is portrait, the dummy data to gridData
   // this will be changed to proper http requests when available
-  if (gridType === "portrait") {
+  if (location === "/grid") {
     gridData = data.grid.portraits;
-  } else if (gridType === "icon") {
+  } else if (location === "/icon-grid") {
     gridData = iconData.grid.tiles;
   }
   const [count, setCount] = useState(0);
@@ -76,30 +78,32 @@ export default function Grid({ gridType }) {
   };
 
   return (
-    <GridContainer>
-      {!!gridData.length &&
-        // if there is data available in gridData, map through it and display each item
-        gridData.map((item, i) => {
-          if (gridType === "portrait") {
-            return (
-              <GridPortrait
-                key={i}
-                portrait={item}
-                index={i}
-                onClick={changeFocus}
-              />
-            );
-          } else if (gridType === "icon") {
-            return (
-              <GridIcon key={i} icon={item} index={i} onClick={changeFocus} />
-            );
-          } else return null;
-        })}
-      {gridType === "portrait" ? (
-        <FocusedPortrait portrait={focusedItem} />
-      ) : (
-        <FocusedIcon icon={focusedItem} />
-      )}
-    </GridContainer>
+    <>
+      <Header />
+      <GridContainer>
+        {!!gridData.length &&
+          // if there is data available in gridData, map through it and display each item
+          gridData.map((item, i) => {
+            if (location === "/grid") {
+              return (
+                <GridItem
+                  key={i}
+                  onClick={() => changeFocus(i)}
+                  backgroundImage={item.photo.url}
+                ></GridItem>
+              );
+            } else if (location === "/icon-grid") {
+              return (
+                <GridIcon key={i} icon={item} index={i} onClick={changeFocus} />
+              );
+            } else return null;
+          })}
+        {location === "/grid" ? (
+          <FocusedPortrait portrait={focusedItem} />
+        ) : (
+          <FocusedIcon icon={focusedItem} />
+        )}
+      </GridContainer>
+    </>
   );
 }

@@ -8,7 +8,7 @@ export const api = ({ dispatch }) => next => action => {
   next(action);
 
   if (action.type === API_REQUEST) {
-    const { method, url, payload, onSuccess, onError } = action.meta;
+    const { method, url, onSuccess, onError } = action.meta;
 
     fetch(API_URL + url, { method })
       .then(results => results.json())

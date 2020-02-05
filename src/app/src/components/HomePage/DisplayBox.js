@@ -2,20 +2,20 @@ import React from "react";
 import {
   DisplayContainer,
   DisplayBoxTitle,
-  DisplayInnerContainer
-} from "./styles/homePage";
+  DisplayInnerContainer,
+  P
+} from "./Home.styles";
 
-export default function DisplayBox() {
+export default function DisplayBox({ homeContent }) {
   return (
     <DisplayContainer>
       <DisplayInnerContainer>
-        <DisplayBoxTitle>Content</DisplayBoxTitle>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel,
-          similique iusto nihil illo voluptates nam quae ad adipisci dolores
-          animi sequi! Accusantium dolore recusandae aut error aperiam rem
-          laudantium odio!
-        </p>
+        <DisplayBoxTitle>{homeContent.resting_state.title}</DisplayBoxTitle>
+        <P
+          dangerouslySetInnerHTML={{
+            __html: homeContent.resting_state.content
+          }}
+        />
       </DisplayInnerContainer>
     </DisplayContainer>
   );

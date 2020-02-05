@@ -1,10 +1,10 @@
 import React from "react";
-import { TimeDateContainer } from "./styles/homePage";
+import { TimeDateContainer, Span } from "./Home.styles";
 
 export default function TimeDateDisplay() {
   return (
     <TimeDateContainer>
-      <h1>Content</h1>
+      Weather <Span>Date</Span>
     </TimeDateContainer>
   );
 }

@@ -1,7 +1,12 @@
 import React from "react";
-import { GridItem, GridIconOverlay, Icon } from "./styles/GridStyle";
+import {
+  FocusedPortaitContainer,
+  GridIconOverlay,
+  Icon,
+  FocusedIconDescriptionContainer
+} from "./Grid.style";
 
-export default function GridIcon({ icon, onClick, index }) {
+export default function FocusedIcon({ icon }) {
   let background_color;
 
   // Check to see what background color is served from the API,
@@ -25,20 +30,21 @@ export default function GridIcon({ icon, onClick, index }) {
     default:
       background_color = `rgba(0, 255, 0)`;
   }
-
   return (
-    <GridItem
+    <FocusedPortaitContainer
       style={{ backgroundImage: `url(${icon.background_image.url})` }}
-      onClick={() => onClick(index)}
     >
       <GridIconOverlay
         style={{
           backgroundColor: background_color
         }}
       >
-        <Icon src={icon.icon.url} alt="icon" />
-        <h1>{icon.title}</h1>
+        <FocusedIconDescriptionContainer>
+          <Icon src={icon.icon.url} alt="icon" />
+          <span>{icon.title}</span>
+          <div dangerouslySetInnerHTML={{ __html: icon.content }} />
+        </FocusedIconDescriptionContainer>
       </GridIconOverlay>
-    </GridItem>
+    </FocusedPortaitContainer>
   );
 }

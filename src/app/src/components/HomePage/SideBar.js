@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { SideBarContainer } from "./styles/homePage";
+import { SideBarContainer } from "./Home.styles";
 import MenuItem from "./MenuItem";
 import { useNortherTrustActions } from "../../redux/hooks/commands/useNorthernTrustActions";
 import { useMenuItems } from "../../redux/hooks/queries/useMenuItems";
 
-export default function SideBar(props) {
+export default function SideBar() {
   const { fetchMenuItems } = useNortherTrustActions();
 
   useEffect(() => {
@@ -16,9 +16,7 @@ export default function SideBar(props) {
   return (
     <SideBarContainer>
       {!!menuItems.success &&
-        menuItems.nav.map(item => (
-          <MenuItem key={item.id} item={item} {...props} />
-        ))}
+        menuItems.nav.map(item => <MenuItem key={item.id} item={item} />)}
     </SideBarContainer>
   );
 }
