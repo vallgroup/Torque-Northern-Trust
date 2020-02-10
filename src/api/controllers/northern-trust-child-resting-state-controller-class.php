@@ -34,13 +34,13 @@ class TQNT_Resting_State_Controller extends TQNT_Object_Controller {
 
 		$_resting_state = array();
 
-		$_resting_state['background_images'] = $this->get_background_images();
+		$_resting_state['background_images'] = get_field('background_images', 'option');
 
-		$_resting_state['content'] = 'This is the content';
+		$_resting_state['content'] = get_field('content', 'option');
 
-		$_resting_state['weather'] = array( 'something' );
+		$_resting_state['weather'] = get_field('weather', 'option');
 
-		$_resting_state['feed'] = array( 'something' );
+		$_resting_state['feed'] = get_field('feed', 'option');
 
 		return $_resting_state;
 	}
@@ -50,6 +50,16 @@ class TQNT_Resting_State_Controller extends TQNT_Object_Controller {
 
 		if ( $background_images ) {
 			return $background_images;
+		} else {
+			return false;
+		}
+	}
+
+	private function get_Content() {
+		$content = get_field('content', 'option');
+
+		if ( $content ) {
+			return $content;
 		} else {
 			return false;
 		}

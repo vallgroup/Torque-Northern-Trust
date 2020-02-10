@@ -98,7 +98,15 @@ if ( class_exists( 'Torque_Map_CPT' ) ) {
  }
  add_action( 'admin_menu', 'torque_remove_menus' );
 
+ add_filter('register_post_type_args', 'app_map_cpt_to_menus', 10, 2);
+ function app_map_cpt_to_menus($args, $post_type){
 
+     if ($post_type == 'torque_map'){
+         $args['show_in_nav_menus'] = true;
+     }
+
+     return $args;
+ }
 
 
 /**
