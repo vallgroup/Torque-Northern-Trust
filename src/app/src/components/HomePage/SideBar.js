@@ -12,7 +12,7 @@ export default function SideBar() {
   }, []);
 
   const menuItems = useMenuItems();
-
+console.log(menuItems)
   return (
     <SideBarContainer>
       {!!menuItems.success &&

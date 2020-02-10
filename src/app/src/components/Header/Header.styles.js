@@ -20,7 +20,7 @@ export const LeftHeaderContent = styled.div`
 export const RightHeaderContent = styled.div`
   display: flex;
   align-items: center;
-  width: 30%;
+  /* width: 30%; */
   color: white;
   height: 50%;
   justify-content: space-between;
@@ -34,11 +34,13 @@ export const HeaderText = styled.h1`
   font-size: 94pt;
   font-weight: 300;
   margin: 0;
+  text-transform: uppercase;
 `;
 
 export const Divider = styled.div`
   height: 100%;
   width: 10px;
+  margin: 0 50px;
   background: white;
 `;
 

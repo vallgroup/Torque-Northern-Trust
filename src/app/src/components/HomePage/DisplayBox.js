@@ -9,14 +9,16 @@ import {
 export default function DisplayBox({ homeContent }) {
   return (
     <DisplayContainer>
-      <DisplayInnerContainer>
-        <DisplayBoxTitle>{homeContent.resting_state.title}</DisplayBoxTitle>
-        <P
-          dangerouslySetInnerHTML={{
-            __html: homeContent.resting_state.content
-          }}
-        />
-      </DisplayInnerContainer>
+      {homeContent
+        && <DisplayInnerContainer>
+          <DisplayBoxTitle>{homeContent.title}</DisplayBoxTitle>
+          <P
+            dangerouslySetInnerHTML={{
+              __html: homeContent.description
+            }}
+          />
+        </DisplayInnerContainer>
+      }
     </DisplayContainer>
   );
 }

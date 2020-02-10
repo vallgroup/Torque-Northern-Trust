@@ -12,6 +12,7 @@ export const MapContainer = styled.div`
   background-color: lightgrey;
   border: 4px solid white;
   box-sizing: border-box;
+  position: relative;
 `;
 
 export const PointsOfInterest = styled.div`

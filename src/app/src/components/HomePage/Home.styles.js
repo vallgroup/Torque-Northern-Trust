@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import posed from "react-pose";
 
+import { Link } from "react-router-dom";
+
 export const HomePageContainer = styled.div`
   height: 100vh;
   width: 100vw;
@@ -19,7 +21,7 @@ export const HomePageLogo = styled.img`
 `;
 
 export const SideBarContainer = styled.div`
-  width: 200px;
+  width: 20vw;
   position: absolute;
   right: 2.5%;
   top: 22%;
@@ -28,19 +30,20 @@ export const SideBarContainer = styled.div`
   flex-direction: column;
 `;
 
-export const SideBarP = styled(
-  posed.p({
-    enter: { x: 0, opacity: 1 },
-    exit: { x: 50, opacity: 0 }
-  })
-)`
+export const SideBarP = styled.p`
   margin-bottom: 5px;
   margin-top: 0;
   font-size: 41pt;
+  color: #fff;
 `;
 
 export const MenuItemContainer = styled.div`
   margin-bottom: 20px;
+`;
+
+export const MenuLink = styled(Link)`
+  text-decoration: none;
+  text-transform: uppercase;
 `;
 
 export const DisplayContainer = styled.div`
@@ -82,17 +85,23 @@ export const TimeDateContainer = styled.p`
   font-size: 72pt;
   margin: 0;
   margin-top: 50px;
+  vertical-align: middle;
 `;
 
 export const Span = styled.span`
-  font-size: 43pt;
+  font-size: 33pt;
+  lin-height: 43pt;
+  font-weight: 300;
+  text-transform: uppercase;
+  vertical-align: middle;
 `;
 
 export const BottomDescriptionContainer = styled.p`
   position: relative;
-  top: 22%;
+  top: 24%;
   left: 5%;
-  font-size: 63pt;
+  font-size: 60pt;
+  font-weight: 100;
   margin: 0;
   font-style: italic;
 `;

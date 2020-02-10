@@ -7,6 +7,7 @@ import {
 } from "./Grid.style";
 
 export default function FocusedPortrait({ portrait }) {
+  if (!portrait) return null
   return (
     <FocusedPortaitContainer backgroundImage={portrait.photo.url}>
       <FocusedDescriptionContainer>

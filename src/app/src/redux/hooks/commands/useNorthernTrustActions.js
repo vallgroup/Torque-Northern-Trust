@@ -5,18 +5,21 @@ import {
   apiRequest,
   setMenuItems,
   setEvents,
-  setHomeContent
+  setHomeContent,
+  setMapContent
 } from "../../store/actions";
 
 export function useNortherTrustActions() {
   const dispatch = useDispatch();
   const nameSpace = "/northern-trust/v1";
 
-  const fetchGridPortraits = () => {
+  const mapNameSpace = "/torque-map/v1";
+
+  const fetchGridPortraits = (slug) => {
     dispatch(
       apiRequest({
         method: "GET",
-        url: `${nameSpace}/portrait-grid/test-grid`,
+        url: `${nameSpace}/portrait-grid/${slug}`,
         onSuccess: onFetchGridPortraitsSuccess,
         onError: fetchGridPortraitsError
       })
@@ -92,7 +95,7 @@ export function useNortherTrustActions() {
     dispatch(
       apiRequest({
         method: "GET",
-        url: `${nameSpace}/events`,
+        url: `${nameSpace}/resting-state`,
         onSuccess: onFetchHomeContentSuccess,
         onError: fetchHomeContentError
       })
@@ -107,11 +110,31 @@ export function useNortherTrustActions() {
     console.log(error);
   };
 
+  const fetchMap = (slug) => {
+    dispatch(
+      apiRequest({
+        method: "GET",
+        url: `${mapNameSpace}/map/${slug}`,
+        onSuccess: onFetchMapSuccess,
+        onError: fetchMapError
+      })
+    );
+  };
+
+  const onFetchMapSuccess = map => {
+    dispatch(setMapContent({ payload: map }));
+  };
+
+  const fetchMapError = error => {
+    console.log(error);
+  };
+
   return {
     fetchGridPortraits,
     fetchGridIcons,
     fetchMenuItems,
     fetchEvents,
-    fetchHomeContent
+    fetchHomeContent,
+    fetchMap
   };
 }

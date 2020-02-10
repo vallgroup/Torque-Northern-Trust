@@ -18,13 +18,17 @@ function App() {
             <PoseGroup>
               <RouteContainer key={location.pathname}>
                 <Switch location={location}>
+
                   <Route exact path="/" component={HomePage} />
-                  <Route exact path="/grid" component={Grid} />
-                  <Route exact path="/icon-grid" component={Grid} />
+
+                  <Route exact path="/portrait-grid/:slug" component={Grid} />
+                  <Route exact path="/icon-grid/:slug" component={Grid} />
+                  <Route exact path="/event/:slug" component={Events} />
                   <Route exact path="/events" component={Events} />
+
                   <Route exact path="/presentation" component={Presentation} />
                   <Route exact path="/agenda" component={Agenda} />
-                  <Route exact path="/map" component={Map} />
+                  <Route exact path="/torque-map/:slug" component={Map} />
                 </Switch>
               </RouteContainer>
             </PoseGroup>

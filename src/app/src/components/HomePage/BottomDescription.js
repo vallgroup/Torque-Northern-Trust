@@ -1,6 +1,11 @@
 import React from "react";
 import { BottomDescriptionContainer } from "./Home.styles";
 
-export default function BottomDescription() {
-  return <BottomDescriptionContainer>Content</BottomDescriptionContainer>;
+export default function BottomDescription({feed}) {
+  // console.log(feed)
+  return (
+    <BottomDescriptionContainer>
+      Content
+    </BottomDescriptionContainer>
+  );
 }

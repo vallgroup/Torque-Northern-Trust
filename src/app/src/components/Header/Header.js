@@ -21,7 +21,7 @@ export default function Header({ headerText }) {
         <Logo src={nt_logo} alt="" />
       </LeftHeaderContent>
       <RightHeaderContent>
-        <HeaderText>{headerText ? headerText : "HeaderText"}</HeaderText>
+        <HeaderText>{headerText ? headerText : ""}</HeaderText>
         <Divider></Divider>
         <HomeButton
           src={home_button}
