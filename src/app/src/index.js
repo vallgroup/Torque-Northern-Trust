@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store/index";
 import { ThemeProvider } from "styled-components";
 import * as theme from "./theme";
-
+alert('hello')
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
@@ -16,5 +16,5 @@ ReactDOM.render(
       </Router>
     </ThemeProvider>
   </Provider>,
-  document.getElementById("root")
+  document.getElementById("northern-trust-tv-app-entry")
 );

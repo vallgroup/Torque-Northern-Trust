@@ -11,9 +11,10 @@ import {
 
 export function useNortherTrustActions() {
   const dispatch = useDispatch();
-  const nameSpace = "/northern-trust/v1";
 
-  const mapNameSpace = "/torque-map/v1";
+  const nameSpace = `/northern-trust/v1`;
+
+  const mapNameSpace = `/torque-map/v1`;
 
   const fetchGridPortraits = (slug) => {
     dispatch(

@@ -3,15 +3,12 @@
  * Overrides the parent theme
  */
 ?>
-<?php // TQ::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
+<?php TQ::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
 
-<main>
+<main id="northern-trust-tv-app-entry">
 
-	<h1>
-		Hello
-		
-	</h1>
+	<h1></h1>
 
 </main>
 
-<?php // TQ::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer') ); ?>
+<?php TQ::get_template_parts( array( 'parts/shared/html-footer') ); ?>

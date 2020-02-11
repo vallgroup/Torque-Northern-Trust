@@ -31,6 +31,9 @@ export const GridItem = styled(
   color: white;
   box-sizing: border-box;
   background-image: url(${props => props.backgroundImage});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 export const FocusedPortaitContainer = styled(
@@ -50,6 +53,9 @@ export const FocusedPortaitContainer = styled(
   border: 4px solid white;
   box-sizing: border-box;
   background-image: url(${props => props.backgroundImage});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   align-items: flex-end;
 `;
