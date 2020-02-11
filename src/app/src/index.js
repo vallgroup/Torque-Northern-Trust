@@ -8,13 +8,21 @@ import { store } from "./redux/store/index";
 import { ThemeProvider } from "styled-components";
 import * as theme from "./theme";
 alert('hello')
-ReactDOM.render(
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <Router>
-        <App />
-      </Router>
-    </ThemeProvider>
-  </Provider>,
-  document.getElementById("northern-trust-tv-app-entry")
-);
+
+const entry = document.querySelectorAll("#northern-trust-tv-app-entry");
+
+entry.forEach(entry => {
+  if (entry) {
+    // pass through the data-site attr as props so the app knows where to send requests
+    ReactDOM.render(
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <App />
+          </Router>
+        </ThemeProvider>
+      </Provider>,
+      entry
+    );
+  }
+});
