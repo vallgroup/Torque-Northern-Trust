@@ -1,12 +1,7 @@
 import React from "react";
-import {
-  FocusedPortaitContainer,
-  GridIconOverlay,
-  Icon,
-  FocusedIconDescriptionContainer
-} from "./Grid.style";
+import { GridItem, GridIconOverlay, Icon } from "../Grids/Grid.style";
 
-export default function FocusedIcon({ icon }) {
+export default function GridIcon({ icon, onClick, index }) {
   let background_color = '#fff';
 
   if (icon) {
@@ -33,25 +28,16 @@ export default function FocusedIcon({ icon }) {
     }
   }
 
-  const backgroundImage = icon && icon.background_image
-    ? icon.background_image.url
-    : ''
-
   return (
-    <FocusedPortaitContainer
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+    <GridItem
+      backgroundImage={(icon.background_image
+        && icon.background_image.sizes.medium) || ''}
+      onClick={() => onClick(index)}
     >
-      <GridIconOverlay
-        style={{
-          backgroundColor: background_color
-        }}
-      >
-        <FocusedIconDescriptionContainer>
-          <Icon src={icon ? icon.icon.url : ''} alt="icon" />
-          <span>{icon && icon.title}</span>
-          <div dangerouslySetInnerHTML={{ __html: icon && icon.content }} />
-        </FocusedIconDescriptionContainer>
+      <GridIconOverlay backgroundColor={background_color}>
+        <Icon src={icon.icon ? icon.icon.sizes.medium : ''} alt="icon" />
+        <h1>{icon.title}</h1>
       </GridIconOverlay>
-    </FocusedPortaitContainer>
+    </GridItem>
   );
 }

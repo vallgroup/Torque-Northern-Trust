@@ -1,39 +1,39 @@
 import React, { useState, useEffect, memo } from "react";
 import { GridContainer, GridItem } from "../Grids/Grid.style";
 import { useInterval } from "../../hooks/useInterval";
-import FocusedPortrait from "./FocusedPortrait";
+import FocusedIcon from "./FocusedIcon";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import Header from "../Header/Header";
-import Portraits from './Portraits'
+import Icons from './Icons'
 import {useNortherTrustActions} from '../../redux/hooks/commands/useNorthernTrustActions'
-import {useGridPortraits} from '../../redux/hooks/queries/useGridPortraits'
+import {useGridIcons} from '../../redux/hooks/queries/useGridIcons'
 
 function PortraitGrids() {
-  const {fetchGridPortraits} = useNortherTrustActions()
+  const {fetchGridIcons} = useNortherTrustActions()
   const history = useHistory();
   const location = useLocation();
   const params = useParams();
 
-  const gridPortraits = useGridPortraits()
+  const gridIcons = useGridIcons()
 
   const [count, setCount] = useState(0);
-  const [focusedItem, setFocus] = useState(gridPortraits.grid && gridPortraits.grid.portraits[0]);
+  const [focusedItem, setFocus] = useState(gridIcons.grid && gridIcons.grid.tiles[0]);
   const [recentlyClicked, setRecentlyClicked] = useState(false);
 
   useEffect(() => {
-    if (!gridPortraits.grid) {
-      fetchGridPortraits(params.slug)
+    if (!gridIcons.grid) {
+      fetchGridIcons(params.slug)
     }
   }, [])
 
   useEffect(() => {
-    setFocus(gridPortraits.grid && gridPortraits.grid.portraits[0]);
-  }, [gridPortraits]);
+    setFocus(gridIcons.grid && gridIcons.grid.tiles[0]);
+  }, [gridIcons]);
 
   // when the count increments, change the grid portrait that is in focus
   // useEffect(() => {
   //   function timedFocus() {
-  //     setFocus(gridPortraits.grid && gridPortraits.grid.portraits[count]);
+  //     setFocus(gridIcons.grid && gridIcons.grid.tiles[count]);
   //   }
   //   return timedFocus();
   // }, [count]);
@@ -77,22 +77,22 @@ function PortraitGrids() {
   // true so the count stops running
   const changeFocus = index => {
     // setCount(index);
-    setFocus(gridPortraits.grid && gridPortraits.grid.portraits[index]);
+    setFocus(gridIcons.grid && gridIcons.grid.tiles[index]);
     // setRecentlyClicked(true);
   };
 
   return (
     <>
-      <Header headerText={(gridPortraits.grid && gridPortraits.grid.title) || ''} />
+      <Header headerText={(gridIcons.grid && gridIcons.grid.title) || ''} />
       <GridContainer>
-        {gridPortraits.grid
-          && gridPortraits.grid.portraits
-          && <Portraits
+        {gridIcons.grid
+          && gridIcons.grid.tiles
+          && <Icons
             onClick={changeFocus}
-            portraits={gridPortraits.grid.portraits}
+            tiles={gridIcons.grid.tiles}
           />
         }
-        <FocusedPortrait portrait={focusedItem} />
+        <FocusedIcon icon={focusedItem} />
       </GridContainer>
     </>
   );

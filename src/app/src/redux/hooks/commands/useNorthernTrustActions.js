@@ -35,11 +35,11 @@ export function useNortherTrustActions() {
     console.log(error);
   };
 
-  const fetchGridIcons = () => {
+  const fetchGridIcons = (slug) => {
     dispatch(
       apiRequest({
         method: "GET",
-        url: `${nameSpace}/icon-grid/test-grid`,
+        url: `${nameSpace}/icon-grid/${slug}`,
         onSuccess: onFetchGridIconsSuccess,
         onError: fetchGridIconsError
       })

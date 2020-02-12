@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "./components/Grids/Grid";
+import IconGrids from "./components/IconGrids/IconGrids";
 import PortraitGrids from "./components/PortraitGrids/PortraitGrids";
 import { withRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
@@ -23,7 +23,7 @@ function App() {
                   <Route exact path="/" component={HomePage} />
 
                   <Route exact path="/portrait-grid/:slug" component={PortraitGrids} />
-                  <Route exact path="/icon-grid/:slug" component={Grid} />
+                  <Route exact path="/icon-grid/:slug" component={IconGrids} />
                   <Route exact path="/event/:slug" component={Events} />
                   <Route exact path="/events" component={Events} />
 
