@@ -23,30 +23,30 @@ export default function HomePage() {
 
   const [count, setCount] = useState(0);
 
-  const backgroundData = data.resting_state.background_images;
+  const restingState = homeContent.resting_state || {}
+  const backgroundData = restingState.background_images || [];
+
 
   useEffect(() => {
-    return fetchHomeContent();
+    fetchHomeContent();
   }, []);
 
   // On first render, randomly pick the background image
   useEffect(() => {
-    setCount(Math.floor(Math.random() * (backgroundData.length - 1)));
+    setCount(Math.floor(Math.random() * (4 - 1)));
   }, []);
 
-  // const homeContent = data;
-
-  const restingState = homeContent.resting_state || {}
-
   return (
-    <HomePageContainer backgroundImage={backgroundData[count].url}>
+    <HomePageContainer
+      backgroundImage={backgroundData && backgroundData[count] && backgroundData[count].url}
+    >
       <HomePageLogo src={ntLogo} />
       <SideBar />
       <LeftSideContainer>
         <DisplayBox homeContent={restingState.content} />
         {restingState.weather
           && <TimeDateDisplay weather={restingState.weather} />}
-        <BottomDescription feed={restingState.feed} />
+        <BottomDescription feed={restingState.feed || ''} />
       </LeftSideContainer>
     </HomePageContainer>
   );

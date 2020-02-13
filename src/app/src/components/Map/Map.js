@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import { MapPage, PointsOfInterest } from "./Map.styles";
 import { MapContainer } from "./Map.styles";
 import Header from "../Header/Header";
 import TorqueMap from '../TorqueMap'
@@ -7,10 +6,18 @@ import { useNortherTrustActions } from "../../redux/hooks/commands/useNorthernTr
 import { useMapContent } from "../../redux/hooks/queries/useMapContent";
 import { useParams } from "react-router-dom";
 
+import {Button} from '../../styles/appStyles'
+import {
+  MapPage,
+  PointsOfInterest,
+  POIResultList
+} from "./Map.styles";
+
 export default function Map() {
   const { fetchMap } = useNortherTrustActions();
   const params = useParams();
   const [poiSelected, setPoiSelected] = useState(null)
+  const [poisList, setPoisList] = useState(null)
 
   useEffect(() => {
     return fetchMap(params.slug);
@@ -37,20 +44,33 @@ export default function Map() {
               pois={map.pois}
               styles={JSON.parse(map.map_styles)}
               poiSelected={poiSelected}
+              updatePOIsList={newList => setPoisList(newList)}
             />
           }
         </MapContainer>
         <PointsOfInterest>
           {map.pois
             && map.pois.map((poi, idx) => (
-              <button
-                onClick={e => selectPOI(idx)}
+              <Button
+                onClick={e => selectPOI(map.pois[idx] || null)}
                 key={idx}
               >
                 {poi.name}
-              </button>
+              </Button>
             ))
           }
+
+          <POIResultList>
+            {poisList
+              && poisList.map((poi, index) => (
+                <p
+                  key={index}
+                >
+                  {poi.name}
+                </p>
+              ))
+            }
+          </POIResultList>
         </PointsOfInterest>
       </MapPage>
     </>

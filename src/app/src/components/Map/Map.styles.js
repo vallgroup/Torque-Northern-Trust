@@ -18,7 +18,14 @@ export const MapContainer = styled.div`
 export const PointsOfInterest = styled.div`
   width: 37.5%;
   height: 100%;
-  background: darkgrey;
+  background-color: rgb(174, 145, 50);;
   border: 4px solid white;
   box-sizing: border-box;
+  padding: 3em;
 `;
+
+export const POIResultList = styled.div`
+  border-top: 2px solid white;
+  min-height: 3em;
+  border-bottom: 2px solid white;
+`

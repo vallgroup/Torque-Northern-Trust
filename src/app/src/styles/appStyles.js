@@ -15,3 +15,13 @@ export const RouteContainer = styled(
   height: 100%;
   width: 100%;
 `;
+
+export const Button = styled.button`
+  background-color: transparent;
+  appearance: none;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 30pt;
+  padding: 0.5em 2em;
+  margin: 1em 0.25em;
+`
