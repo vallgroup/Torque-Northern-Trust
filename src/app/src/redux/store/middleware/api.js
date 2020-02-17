@@ -1,7 +1,7 @@
 import { API_REQUEST } from "../actions/api";
-console.log(process)
 
 const domain = `http://northerntrust.torquelaunchdev.com/wp-json`
+// const domain = `http://localhost:8000/wp-json`
 
 const API_URL = process.env.BASE_URL
   ? process.env.BASE_URL

@@ -2,32 +2,49 @@ import React from "react";
 import { VideoPageContainer } from "./videoStyles";
 import { useCurrentEvent } from "../../redux/hooks/queries/useCurrentEvent";
 import { useHistory } from "react-router-dom";
+import Header from "../Header/Header";
 
 export default function VideoPage() {
   const currentEvent = useCurrentEvent();
   const history = useHistory();
-  let source;
-  if (!!currentEvent.presentation && !!currentEvent.presentation[0].video_url) {
-    source = currentEvent.presentation[0].video_url;
-  } else if (
-    !!currentEvent.presentation &&
-    !!currentEvent.presentation[0].file.url
-  ) {
-    source = currentEvent.presentation[0].file.url;
-  } else {
-    source = null;
-    history.goBack();
+  // history.goBack();
+  const presentation = currentEvent.presentation
+    && currentEvent.presentation[0]
+  let source, title;
+  console.log(presentation)
+
+  if (!presentation) {
+    return ('No presentation found. Go back and try again.')
   }
 
-  return (
+  // acf_fc_layout ('video'|pdf)
+
+  if ('pdf' === presentation.acf_fc_layout) {
+    source = presentation.file
+      && presentation.file.url
+    title = presentation.file
+      && presentation.file.name
+  } else
+  if ('video' === presentation.acf_fc_layout) {
+    source = `https://www.youtube.com/embed/${presentation.video_id || ''}?autoplay=1`
+    title = 'Video player'
+  }
+
+  return (<>
+    <Header
+      position={`bottom`}
+      goBack={true}
+    />
     <VideoPageContainer>
       <iframe
-        title="video"
+        title={title || ''}
         width="100%"
         height="100%"
-        src={source}
-        frameBorder="0"
+        src={source || ''}
+        frameBorder={0}
+        allowFullScreen={true}
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       ></iframe>
     </VideoPageContainer>
-  );
+  </>);
 }

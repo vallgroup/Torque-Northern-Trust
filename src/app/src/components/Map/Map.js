@@ -10,7 +10,8 @@ import {Button} from '../../styles/appStyles'
 import {
   MapPage,
   PointsOfInterest,
-  POIResultList
+  POIResultList,
+  PointsOfInterestButtons
 } from "./Map.styles";
 
 export default function Map() {
@@ -18,18 +19,29 @@ export default function Map() {
   const params = useParams();
   const [poiSelected, setPoiSelected] = useState(null)
   const [poisList, setPoisList] = useState(null)
+  const [stage, setStage] = useState('init')
 
   useEffect(() => {
     return fetchMap(params.slug);
   }, []);
 
-  const map = useMapContent();
+  useEffect(() => {
+    console.log(poiSelected, poisList)
+    setStage(
+      (poiSelected && null === poisList)
+        ? 'loading'
+        : 'init'
+    )
+  }, [poiSelected, poisList])
 
+  const map = useMapContent();
+console.log(map)
   const mapTitle = map.map_details
     ? map.map_details.title
     : ''
 
   const selectPOI = index => {
+    setPoisList(null)
     setPoiSelected(index)
   }
 
@@ -48,17 +60,21 @@ export default function Map() {
             />
           }
         </MapContainer>
+
         <PointsOfInterest>
-          {map.pois
-            && map.pois.map((poi, idx) => (
-              <Button
-                onClick={e => selectPOI(map.pois[idx] || null)}
-                key={idx}
-              >
-                {poi.name}
-              </Button>
-            ))
-          }
+          <PointsOfInterestButtons>
+            {map.pois
+              && map.pois.map((poi, idx) => (
+                <Button
+                  onClick={e => selectPOI(map.pois[idx] || null)}
+                  key={idx}
+                  className={(selectPOI === poi) ? 'inverse' : 'something'}
+                >
+                  {poi.name}
+                </Button>
+              ))
+            }
+          </PointsOfInterestButtons>
 
           <POIResultList>
             {poisList
@@ -67,10 +83,24 @@ export default function Map() {
                   key={index}
                 >
                   {poi.name}
+                  {poi.duration
+                    && ` ${poi.duration.text} walk`
+                  }
                 </p>
               ))
             }
+
+            {('loading' === stage)
+              && <p>Loading points of interest...</p>
+            }
           </POIResultList>
+
+          <Button
+            inverse
+            onClick={e => alert('This will load something awesome!')}
+          >
+            View Experience
+          </Button>
         </PointsOfInterest>
       </MapPage>
     </>

@@ -71,10 +71,10 @@
                         "sub_fields": [
                             {
                                 "key": "field_5ded908080ca1",
-                                "label": "Video URL",
-                                "name": "video_url",
-                                "type": "url",
-                                "instructions": "",
+                                "label": "Video ID",
+                                "name": "video_id",
+                                "type": "text",
+                                "instructions": "Enter a video ID from You Tube.",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
@@ -83,7 +83,10 @@
                                     "id": ""
                                 },
                                 "default_value": "",
-                                "placeholder": "https:\/\/youtube.com\/videoID"
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
                             }
                         ],
                         "min": "",
@@ -496,6 +499,135 @@
         "key": "group_5e17768b85965",
         "title": "Resting State",
         "fields": [
+            {
+                "key": "field_5e3b1124da739",
+                "label": "Content",
+                "name": "content",
+                "type": "group",
+                "instructions": "Enter the content to appear on the main square on the idle page.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e3b115ada73a",
+                        "label": "Title",
+                        "name": "title",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5e3b1163da73b",
+                        "label": "Description",
+                        "name": "description",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_5e3ed6008e8c3",
+                "label": "Weather",
+                "name": "weather",
+                "type": "group",
+                "instructions": "We use openweathermap.org to pull the weather data in real time. In order to display weather data we need an API key from openweathermap.org and a zip code.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e3ed7068e8c4",
+                        "label": "API Key",
+                        "name": "api_key",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "051329b7a4a6b550b878252d0cc7f247",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5e3ed7228e8c5",
+                        "label": "Zip Code",
+                        "name": "zip_code",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_5e3ed8626a233",
+                "label": "News Feed",
+                "name": "feed",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
             {
                 "key": "field_5e17773b7023d",
                 "label": "Background Images",

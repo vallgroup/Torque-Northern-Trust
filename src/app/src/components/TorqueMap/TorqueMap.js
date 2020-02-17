@@ -12,7 +12,7 @@ function TorqueMap(props) {
     poiSelected,
     updatePOIsList, // used to update sidebar
   } = props
-
+  // console.log(props)
   const [mapDetails, setMapDetails] = useState(props.map || {})
   const [mapCenter, setMapCenter] = useState(null)
   const [poisList, setPoisList] = useState(null)
@@ -36,11 +36,30 @@ function TorqueMap(props) {
   }, [poiSelected])
 
   useEffect(() => {
+    if (!mapCenter) return;
+
     if (updatePOIsList
     && 'function' === typeof updatePOIsList ) {
       updatePOIsList(poisList)
     }
   }, [poisList])
+
+  const computePOIsDistance = async (pois) => {
+    if (!pois) return;
+
+    const { lng: longitude, lat: latitude } = mapCenter
+    const origin = { longitude, latitude }
+
+    const destinations = pois.map((poi, i) => {
+      const dest = {
+        longitude: poi.geometry && poi.geometry.location.lng(),
+        latitude: poi.geometry && poi.geometry.location.lat()
+      }
+      return new google.maps.LatLng(dest.latitude, dest.longitude)
+    });
+
+    await getDistance(origin, destinations, pois)
+  }
 
   const geocode = async address => {
     const geoClient = new google.maps.Geocoder();
@@ -60,6 +79,7 @@ function TorqueMap(props) {
   }
 
   const nearbySearch = async () => {
+    setPoisList(null)
     // check that we have what we need first
     if (!(map.current
       && map.current.map
@@ -89,7 +109,7 @@ function TorqueMap(props) {
           }
           // if succesful resolve promise
           if (status === 'OK' && results.length > 0) {
-            setPoisList(results)
+            computePOIsDistance(results)
             return;
           }
 
@@ -101,16 +121,34 @@ function TorqueMap(props) {
     );
   }
 
-  const getInfoWindowForMarker = poi => {
-    console.log(poi)
-    const { name, vicinity } = poi;
+  // TODO -- Retrieve the distance for each poi in the list
+  // before returning it up to the parent component.
+  const getDistance = async (origin, destinations, currentPOIs) => {
+    const distanceMatrixService = new google.maps.DistanceMatrixService();
+    await distanceMatrixService.getDistanceMatrix(
+      {
+        origins: [new google.maps.LatLng(origin.latitude, origin.longitude)],
+        destinations: destinations,
+        travelMode: 'DRIVING',
+        unitSystem: google.maps.UnitSystem.IMPERIAL,
+      },
+      (results, status) => {
+      try {
+        // console.log(status)
+        if (status === 'OK') {
+          const newPois = [...currentPOIs.map((poi, idx) => (
+            {...poi, ...results.rows[0].elements[idx]}
+          ))]
+          // console.log(currentPOIs, newPois)
+          setPoisList(newPois)
+        }
 
-    const info = {
-      name,
-      vicinity
-    };
+        throw Error(`Distance Matrix failed with status: ${status}`);
+      } catch (err) {
 
-    return info;
+      }
+    }
+    );
   }
 
   const onMarkerClick = (props, marker) => {
@@ -118,33 +156,37 @@ function TorqueMap(props) {
     setShowInfowindow(true)
   }
 
-  const renderMarkers = () => {
-    const { google } = props;
+  const onMapClick = (props, map) => {
+    setActiveMarker(null)
+    setShowInfowindow(false)
+  }
 
-    const width = 60;
-    const height = 100;
+  const renderMarkers = () => {
 
     if (!poisList) {
       return;
     }
-    console.log(poisList)
+    // console.log(poiSelected, poisList)
 
+    const { google } = props;
+    const width = (poiSelected.marker && poiSelected.marker.width) || 60;
+    const height = 100;
     const filteredPois = poisList.filter(
       poi => !!poi && poi.geometry,
     );
     return filteredPois.map((poi, index) => (
       <Marker
-        key={poi.name}
+        key={index}
         onClick={onMarkerClick}
         name={poi.name}
         position={{ lng: poi.geometry.location.lng(), lat: poi.geometry.location.lat() }}
         icon={{
-          url: poi.icon,
+          url: (poiSelected.marker && poiSelected.marker.url) || poi.icon,
           anchor: new google.maps.Point(width / 2, height),
           size: new google.maps.Size(width, height),
           scaledSize: new google.maps.Size(width, height),
         }}
-        infowindow={getInfoWindowForMarker(poi)}
+        infowindow={{name: poi.name, vicinity: poi.vicinity}}
       />
     ));
   }
@@ -156,6 +198,7 @@ function TorqueMap(props) {
       center={mapCenter}
       ref={map}
       styles={props.styles}
+      onClick={onMapClick}
     >
       {renderMarkers()}
 
@@ -164,19 +207,13 @@ function TorqueMap(props) {
           {activeMarker
             && <>
               <h3>{activeMarker.name}</h3>
-                {activeMarker?.infowindow?.address && (
-                <div className="info_container address">
-                  {activeMarker.infowindow.address}
-                </div>
-              )}
-              <div className="info_container">
-                {activeMarker?.infowindow?.distance && (
-                  <div>{activeMarker.infowindow.distance}</div>
-                )}
-                {activeMarker?.infowindow?.duration && (
-                  <div>{activeMarker.infowindow.duration}</div>
-                )}
-              </div>
+              {activeMarker?.infowindow?.vicinity
+                && (
+                  <div className="info_container vicinity">
+                    {activeMarker.infowindow.vicinity}
+                  </div>
+                )
+              }
             </>
           }
         </InfoWindowRoot>

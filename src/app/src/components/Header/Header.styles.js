@@ -10,12 +10,36 @@ export const HeaderContainer = styled.div`
   align-items: center;
   background-image: url(${top_banner});
   background-size: cover;
+  position: ${props => 'bottom' === props.position ? `fixed` : `relative`};
+  ${props => props.position}: 0;
+  left: 0;
 `;
 
 export const LeftHeaderContent = styled.div`
   display: flex;
   width: 20%;
 `;
+
+export const GoBackBtn = styled.button`
+  position: relative;
+  appearance: none;
+  display: inline-block;
+  background: transparent;
+  border: 0;
+  font-size: 50pt;
+  font-weight: 300;
+  margin: 0;
+  color: white;
+  cursor: pointer;
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: -25%;
+    content: '<';
+    font-size: 1em;
+  }
+`
 
 export const RightHeaderContent = styled.div`
   display: flex;

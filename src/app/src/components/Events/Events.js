@@ -3,7 +3,6 @@ import { useNortherTrustActions } from "../../redux/hooks/commands/useNorthernTr
 import { useEvents } from "../../redux/hooks/queries/useEvents";
 import {
   ButtonContainer,
-  Event,
   EventButton,
   EventsDisplayContainer,
   EventsPage
@@ -11,18 +10,16 @@ import {
 import { useHistory } from "react-router-dom";
 import { useCurrentEventActions } from "../../redux/hooks/commands/useCurrentEventActions";
 import Header from "../Header/Header";
-import { data } from "./data";
+import Event from "./Event";
 
 export default function Events() {
   const { fetchEvents } = useNortherTrustActions();
   const history = useHistory();
   const { setCurrentEventAction } = useCurrentEventActions();
-
+  const eventsData = useEvents();
   useEffect(() => {
     fetchEvents();
   }, []);
-  const eventsData = useEvents();
-  const { event } = eventsData;
 
   const goToEventPresentation = event => {
     history.push(`/presentation`);
@@ -34,28 +31,22 @@ export default function Events() {
     setCurrentEventAction(event);
   };
 
-  // Using dummy data for now
-  const events = data;
+  const { events } = eventsData;
 
   return (
     <>
       <Header />
       <EventsPage>
         <EventsDisplayContainer>
-          {!!events.success &&
-            events.events.map((event, i) => (
-              <Event key={i} borderTop={i === 0 ? "5px solid white" : null}>
-                <h1>{event.title}</h1>
-                <ButtonContainer>
-                  <EventButton onClick={() => goToEventPresentation(event)}>
-                    Presentation
-                  </EventButton>
-                  <EventButton onClick={() => goToEventAgenda(event)}>
-                    Agenda
-                  </EventButton>
-                </ButtonContainer>
-              </Event>
-            ))}
+          {events
+            && events.map((event, i) => {
+              return (<Event
+                key={i}
+                event={event}
+                openPresentation={goToEventPresentation}
+                openAgenda={goToEventAgenda}
+              />)
+            })}
         </EventsDisplayContainer>
       </EventsPage>
     </>

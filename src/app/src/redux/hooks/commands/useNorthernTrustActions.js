@@ -77,7 +77,7 @@ export function useNortherTrustActions() {
     dispatch(
       apiRequest({
         method: "GET",
-        url: `${nameSpace}/event/test`,
+        url: `${nameSpace}/events`,
         onSuccess: onFetchEventsSuccess,
         onError: fetchEventsError
       })

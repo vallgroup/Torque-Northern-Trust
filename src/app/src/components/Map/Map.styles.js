@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Colors} from '../../styles/appStyles'
 
 export const MapPage = styled.div`
   height: 83.7%;
@@ -9,8 +10,8 @@ export const MapPage = styled.div`
 export const MapContainer = styled.div`
   height: 100%;
   width: 62.5%;
-  background-color: lightgrey;
-  border: 4px solid white;
+  background-color: ${Colors.lightGray};
+  border: 4px solid ${Colors.white};
   box-sizing: border-box;
   position: relative;
 `;
@@ -18,14 +19,27 @@ export const MapContainer = styled.div`
 export const PointsOfInterest = styled.div`
   width: 37.5%;
   height: 100%;
-  background-color: rgb(174, 145, 50);;
-  border: 4px solid white;
+  background-color: ${Colors.mustard};
+  border: 4px solid ${Colors.white};
   box-sizing: border-box;
-  padding: 3em;
-`;
+  padding: 8em 3em;
+`
+
+export const PointsOfInterestButtons = styled.div`
+  text-align: center;
+`
 
 export const POIResultList = styled.div`
-  border-top: 2px solid white;
+  border-top: 2px solid ${Colors.white};
   min-height: 3em;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid ${Colors.white};
+  text-align: left;
+  height: 45vh;
+  overflow: auto;
+
+  p {
+    font-size: 24pt;
+    text-transform: uppercase;
+    color: ${Colors.white};
+  }
 `

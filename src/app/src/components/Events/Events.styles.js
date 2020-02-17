@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Button} from '../../styles/appStyles'
 
 export const EventsPage = styled.div`
   height: 83.7%;
@@ -15,25 +16,38 @@ export const EventsDisplayContainer = styled.div`
   text-align: left;
 `;
 
-export const Event = styled.div`
-  border-style: solid;
-  border-width: 0 0 5px 0;
-  border-color: white;
-  border-top: ${props => props.borderTop};
+export const EventWrapper = styled.div`
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute:
+    top: 0;
+    left: 0;
+    height: 5px;
+    background: white;
+    width: 45%;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    font-size: 44pt;
+    font-weight: 300;
+    margin: 0.5em 0;
+  }
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
-  margin-bottom: 5%;
+  margin-bottom: 0.15em;
   justify-content: space-between;
   width: 30%;
 `;
 
-export const EventButton = styled.div`
-  height: 35px;
-  width: 100px;
-  border: 3px solid white;
+export const EventButton = styled(Button)`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0.25em 3em 1em 0;
 `;
