@@ -30,6 +30,7 @@ export const GridItem = styled(
   border: 4px solid white;
   color: white;
   box-sizing: border-box;
+  background-color: ${props => props.backgroundColor};
   background-image: url(${props => props.backgroundImage});
   background-position: center;
   background-size: cover;
@@ -73,13 +74,15 @@ export const FocusedDescriptionContainer = styled(
   padding: 10px 50px 10px 50px;
 `;
 
-export const FocusedIconDescriptionContainer = styled(
+export const FocusedIconDescriptionCopy = styled(
   posed.div({
     enter: { opacity: 1 },
     exit: { opacity: 0 }
   })
 )`
-  margin-left: 3.1vw;
+  flex: 1;
+  width: 100%;
+  font-size: 30pt;
 `;
 
 export const GridIconOverlay = styled.div`
@@ -88,11 +91,24 @@ export const GridIconOverlay = styled.div`
   transition: background-color 500ms;
   color: white;
   background-color: ${props => props.backgroundColor};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24pt;
+  text-align: center;
+  /* mix-blend-mode: multiply; */
+
+  h3 {
+    font-size: 1em;
+    text-transform: uppercase;
+  }
 `;
 
 export const Icon = styled.img`
-  height: 50px;
-  width: 50px;
+  max-width: 3em;
+  height: auto;
+  display: inline-block;
 `;
 
 export const H1 = styled.div`
@@ -103,4 +119,30 @@ export const H1 = styled.div`
 
 export const Span = styled.span`
   font-size: 23pt;
+`;
+
+
+export const FocusedIconDescriptionContainer = styled(
+  posed.div({
+    enter: { opacity: 1 },
+    exit: { opacity: 0 }
+  })
+)`
+  padding: 3em;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  text-align: left;
+
+  ${Icon} {
+    vertical-align: middle;
+    margin-right: 1em;
+  }
+
+  h2 {
+    display: inline-block !important;
+    vertical-align: middle;
+    font-size: 36pt;
+    text-transform: uppercase;
+  }
 `;

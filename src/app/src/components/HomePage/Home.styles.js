@@ -56,6 +56,7 @@ export const DisplayContainer = styled.div`
   top: 22%;
   left: 5%;
   font-size: 52pt;
+  font-weight: 300;
 `;
 
 export const DisplayInnerContainer = styled.div`
@@ -68,6 +69,8 @@ export const DisplayBoxTitle = styled.h1`
   font-size: 65pt;
   display: inline;
   padding: 10px 30px 10px 30px;
+  text-transform: uppercase;
+  font-weight: 400;
 `;
 
 export const LeftSideContainer = styled.div`
@@ -89,8 +92,8 @@ export const TimeDateContainer = styled.p`
 `;
 
 export const Span = styled.span`
-  font-size: 33pt;
-  lin-height: 43pt;
+  font-size: 43pt;
+  line-height: 43pt;
   font-weight: 300;
   text-transform: uppercase;
   vertical-align: middle;
@@ -111,10 +114,30 @@ export const P = styled(
     enter: { x: 0, opacity: 1 },
     exit: { x: 50, opacity: 0 }
   })
-)``;
+)`
+  font-weight: 300;
+`;
 
 export const Logo = styled.img`
   position: fixed;
   top: 8.2vh;
   left: 2.5vw;
 `;
+
+export const ResourcesButton = styled(Link)`
+  position: fixed;
+  z-index: 999;
+  width: 20em;
+  height: 20em;
+  border: 0;
+  text-decoration: none;
+  bottom: 0;
+  right: 0;
+`
+
+export const SunIcon = styled.img`
+  width: 60pt;
+  display: inline-block;
+  margin: 0 20pt 0 0;
+  vertical-align: baseline;
+`

@@ -3,7 +3,8 @@ import {
   FocusedPortaitContainer,
   GridIconOverlay,
   Icon,
-  FocusedIconDescriptionContainer
+  FocusedIconDescriptionContainer,
+  FocusedIconDescriptionCopy
 } from "../Grids/Grid.style";
 
 export default function FocusedIcon({ icon }) {
@@ -14,22 +15,28 @@ export default function FocusedIcon({ icon }) {
     // assign the background color with rgba values
     switch (icon.background_color) {
       case "turquoise":
-      background_color = `rgba(64, 224, 208, 0.5)`;
+      background_color = `rgba(100, 200, 175, 0.95)`;
       break;
       case "green":
-      background_color = `rgba(0, 255, 0, 0.5)`;
+      background_color = `rgba(40, 145, 65, 0.95)`;
+      break;
+      case "dark green":
+      background_color = `rgba(15, 85, 65, 0.95)`;
       break;
       case "orange":
-      background_color = `rgba(255, 165, 0, 0.5)`;
+      background_color = `rgba(190, 155, 55, 0.95)`;
       break;
       case "blue":
-      background_color = `rgba(0, 0, 255, 0.5)`;
+      background_color = `rgba(0, 105, 155, 0.95)`;
       break;
       case "gold":
-      background_color = `rgba(212, 175, 55, 0.5)`;
+      background_color = `rgba(185, 190, 0, 0.95)`;
+      break;
+      case "gray":
+      background_color = `rgba(100, 100, 105, 0.95)`;
       break;
       default:
-      background_color = `rgba(0, 255, 0)`;
+      background_color = `rgba(40, 145, 65, 0.95)`;
     }
   }
 
@@ -42,14 +49,14 @@ export default function FocusedIcon({ icon }) {
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <GridIconOverlay
-        style={{
-          backgroundColor: background_color
-        }}
+        backgroundColor={background_color}
       >
         <FocusedIconDescriptionContainer>
           <Icon src={icon ? icon.icon.url : ''} alt="icon" />
-          <span>{icon && icon.title}</span>
-          <div dangerouslySetInnerHTML={{ __html: icon && icon.content }} />
+          <h2>{icon && icon.title}</h2>
+          <FocusedIconDescriptionCopy
+            dangerouslySetInnerHTML={{ __html: icon && icon.content }}
+          />
         </FocusedIconDescriptionContainer>
       </GridIconOverlay>
     </FocusedPortaitContainer>

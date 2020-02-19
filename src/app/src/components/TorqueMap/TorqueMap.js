@@ -1,8 +1,5 @@
 import React, { useEffect, useState, createRef } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-// import Geocode from './helpers/Geocode';
-// import DistanceMatrix from './helpers/DistanceMatrix';
-// import NearbySearch from './helpers/NearbySearch';
 import { MapContainer, InfoWindowRoot } from './Map.styles';
 
 function TorqueMap(props) {
@@ -12,10 +9,10 @@ function TorqueMap(props) {
     poiSelected,
     updatePOIsList, // used to update sidebar
   } = props
-  // console.log(props)
+
   const [mapDetails, setMapDetails] = useState(props.map || {})
   const [mapCenter, setMapCenter] = useState(null)
-  const [poisList, setPoisList] = useState(null)
+  const [poisList, setPoisList] = useState([])
   const [activeMarker, setActiveMarker] = useState(null)
   const [showInfowindow, setShowInfowindow] = useState(false)
 
@@ -25,19 +22,33 @@ function TorqueMap(props) {
   useEffect(() => {
     const centerMap = async () => {
       if (google && mapDetails.center) {
-        await geocode(mapDetails.center);
+        await geocode(mapDetails.center, (results, status) => {
+          // successful, resove the promise
+          if (status === 'OK') {
+            // pass the lat and lng coordinates
+            setMapCenter({
+              lat: results[0].geometry.location.lat(),
+              lng: results[0].geometry.location.lng(),
+              address: results[0].formatted_address,
+            })
+          }
+        });
       }
     }
     centerMap()
+
+
   }, [])
 
   useEffect(() => {
-    nearbySearch()
+    console.log(poiSelected)
+    setPoisList([])
+    poiSelected && setPoisList(poiSelected.preset_pois)
   }, [poiSelected])
 
   useEffect(() => {
     if (!mapCenter) return;
-
+console.log(poisList)
     if (updatePOIsList
     && 'function' === typeof updatePOIsList ) {
       updatePOIsList(poisList)
@@ -61,20 +72,10 @@ function TorqueMap(props) {
     await getDistance(origin, destinations, pois)
   }
 
-  const geocode = async address => {
+  const geocode = async (address, callback) => {
     const geoClient = new google.maps.Geocoder();
     const coordinates = await geoClient.geocode({ address },
-      (results, status) => {
-        // successful, resove the promise
-        if (status === 'OK') {
-          // pass the lat and lng coordinates
-          setMapCenter({
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng(),
-            address: results[0].formatted_address,
-          })
-        }
-      }
+      callback
     );
   }
 
@@ -163,30 +164,31 @@ function TorqueMap(props) {
 
   const renderMarkers = () => {
 
-    if (!poisList) {
+    if (!poiSelected || !poisList || 0 === poisList.length) {
       return;
     }
-    // console.log(poiSelected, poisList)
+
+    console.log(poisList)
 
     const { google } = props;
     const width = (poiSelected.marker && poiSelected.marker.width) || 60;
-    const height = 100;
+    const height = (poiSelected.marker && poiSelected.marker.height) || 100;
     const filteredPois = poisList.filter(
-      poi => !!poi && poi.geometry,
+      poi => !!poi && (poi.latitude && poi.longitude),
     );
     return filteredPois.map((poi, index) => (
       <Marker
         key={index}
         onClick={onMarkerClick}
-        name={poi.name}
-        position={{ lng: poi.geometry.location.lng(), lat: poi.geometry.location.lat() }}
+        name={poi.title}
+        position={{ lng: poi.longitude, lat: poi.latitude }}
         icon={{
-          url: (poiSelected.marker && poiSelected.marker.url) || poi.icon,
+          url: (poiSelected.marker && poiSelected.marker.url) || '',
           anchor: new google.maps.Point(width / 2, height),
           size: new google.maps.Size(width, height),
           scaledSize: new google.maps.Size(width, height),
         }}
-        infowindow={{name: poi.name, vicinity: poi.vicinity}}
+        infowindow={poi.infowindow}
       />
     ));
   }
@@ -206,13 +208,16 @@ function TorqueMap(props) {
         <InfoWindowRoot>
           {activeMarker
             && <>
-              <h3>{activeMarker.name}</h3>
-              {activeMarker?.infowindow?.vicinity
-                && (
+              {activeMarker?.infowindow
+                ? (
                   <div className="info_container vicinity">
-                    {activeMarker.infowindow.vicinity}
+                    {activeMarker.infowindow}
                   </div>
                 )
+                : <>
+                  <h3>{activeMarker.name}</h3>
+                  <p>{activeMarker.location}</p>
+                </>
               }
             </>
           }

@@ -20,13 +20,26 @@ export default function Map() {
   const [poiSelected, setPoiSelected] = useState(null)
   const [poisList, setPoisList] = useState(null)
   const [stage, setStage] = useState('init')
+  const map = useMapContent();
 
   useEffect(() => {
     return fetchMap(params.slug);
   }, []);
 
   useEffect(() => {
-    console.log(poiSelected, poisList)
+    console.log(map);
+    if (map && map.pois && map.pois.pois) {
+      map.pois.pois.forEach((item, i) => {
+        if (item.preload) {
+          console.log(item)
+          setPoiSelected(item)
+          setPoisList(item.preset_pois)
+        }
+      });
+    }
+  }, [map])
+
+  useEffect(() => {
     setStage(
       (poiSelected && null === poisList)
         ? 'loading'
@@ -34,8 +47,7 @@ export default function Map() {
     )
   }, [poiSelected, poisList])
 
-  const map = useMapContent();
-console.log(map)
+// console.log(map)
   const mapTitle = map.map_details
     ? map.map_details.title
     : ''
@@ -53,7 +65,7 @@ console.log(map)
           {map.map_details
             && <TorqueMap
               map={map.map_details}
-              pois={map.pois}
+              pois={map.pois.pois}
               styles={JSON.parse(map.map_styles)}
               poiSelected={poiSelected}
               updatePOIsList={newList => setPoisList(newList)}
@@ -64,13 +76,14 @@ console.log(map)
         <PointsOfInterest>
           <PointsOfInterestButtons>
             {map.pois
-              && map.pois.map((poi, idx) => (
+              && map.pois.pois
+              && map.pois.pois.map((poi, idx) => (
                 <Button
-                  onClick={e => selectPOI(map.pois[idx] || null)}
+                  onClick={e => selectPOI(map.pois.pois[idx] || null)}
                   key={idx}
-                  className={(selectPOI === poi) ? 'inverse' : 'something'}
+                  className={(poiSelected === poi) ? 'inverse' : 'something'}
                 >
-                  {poi.name}
+                  {poi.title}
                 </Button>
               ))
             }
@@ -82,7 +95,7 @@ console.log(map)
                 <p
                   key={index}
                 >
-                  {poi.name}
+                  {poi.title}
                   {poi.duration
                     && ` ${poi.duration.text} walk`
                   }

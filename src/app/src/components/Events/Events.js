@@ -35,7 +35,7 @@ export default function Events() {
 
   return (
     <>
-      <Header />
+      <Header headerText={'Resources'} />
       <EventsPage>
         <EventsDisplayContainer>
           {events

@@ -9,34 +9,41 @@ export default function GridIcon({ icon, onClick, index }) {
     // assign the background color with rgba values
     switch (icon.background_color) {
       case "turquoise":
-      background_color = `rgba(64, 224, 208, 0.5)`;
+      background_color = `rgba(100, 200, 175, 0.95)`;
       break;
       case "green":
-      background_color = `rgba(0, 255, 0, 0.5)`;
+      background_color = `rgba(40, 145, 65, 0.95)`;
+      break;
+      case "dark green":
+      background_color = `rgba(15, 85, 65, 0.95)`;
       break;
       case "orange":
-      background_color = `rgba(255, 165, 0, 0.5)`;
+      background_color = `rgba(190, 155, 55, 0.95)`;
       break;
       case "blue":
-      background_color = `rgba(0, 0, 255, 0.5)`;
+      background_color = `rgba(0, 105, 155, 0.95)`;
       break;
       case "gold":
-      background_color = `rgba(212, 175, 55, 0.5)`;
+      background_color = `rgba(185, 190, 0, 0.95)`;
+      break;
+      case "gray":
+      background_color = `rgba(100, 100, 105, 0.95)`;
       break;
       default:
-      background_color = `rgba(0, 255, 0)`;
+      background_color = `rgba(40, 145, 65, 0.95)`;
     }
   }
 
   return (
     <GridItem
+      backgroundColor={background_color}
       backgroundImage={(icon.background_image
         && icon.background_image.sizes.medium) || ''}
       onClick={() => onClick(index)}
     >
       <GridIconOverlay backgroundColor={background_color}>
         <Icon src={icon.icon ? icon.icon.sizes.medium : ''} alt="icon" />
-        <h1>{icon.title}</h1>
+        <h3>{icon.title}</h3>
       </GridIconOverlay>
     </GridItem>
   );

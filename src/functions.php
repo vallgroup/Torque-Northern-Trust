@@ -69,8 +69,15 @@ if ( class_exists( 'TQNT_REST_Controller' ) ) {
 
 if ( class_exists( 'Torque_Map_CPT' ) ) {
   // add POIs to the map CPT
-  add_filter( Torque_Map_CPT::$POIS_ALLOWED_FILTER, function( $n ) {return $n = 5;} );
-  add_filter( Torque_Map_CPT::$POIS_MANUAL_FILTER, function( $n ) {return $n = false;} );
+  add_filter( 'torque_map_api_key', function($n) {
+    return $n = 'AIzaSyBtJClII3bXTZjSDnHoIrnawoQgqg9kx0Q';
+  });
+  add_filter( Torque_Map_CPT::$POIS_ALLOWED_FILTER, function( $n ) {
+    return $n = 5;
+  } );
+  add_filter( Torque_Map_CPT::$POIS_MANUAL_FILTER, function( $n ) {
+    return $n = true;
+  } );
 }
 
 

@@ -1,6 +1,11 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios'
-import { TimeDateContainer, Span } from "./Home.styles";
+import {
+  SunIcon,
+  TimeDateContainer,
+  Span
+} from "./Home.styles";
+import sunIcon from '../../assets/sun_icon.svg'
 
 export default function TimeDateDisplay({weather}) {
 
@@ -73,7 +78,7 @@ export default function TimeDateDisplay({weather}) {
         && `${Math.round(current.main.temp)}º `
       }
       {
-        /*Show I con for weather here*/
+        <SunIcon src={sunIcon} />
       }
       {getTime()}
        <Span>

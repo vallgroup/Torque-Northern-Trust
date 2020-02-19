@@ -21,9 +21,7 @@ function PortraitGrids() {
   const [recentlyClicked, setRecentlyClicked] = useState(false);
 
   useEffect(() => {
-    if (!gridPortraits.grid) {
       fetchGridPortraits(params.slug)
-    }
   }, [])
 
   useEffect(() => {

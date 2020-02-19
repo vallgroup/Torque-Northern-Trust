@@ -13,7 +13,8 @@ import ntLogo from '../../assets/nt_logo.svg'
 import {
   HomePageLogo,
   HomePageContainer,
-  LeftSideContainer
+  LeftSideContainer,
+  ResourcesButton
 } from "./Home.styles";
 
 export default function HomePage() {
@@ -48,6 +49,9 @@ export default function HomePage() {
           && <TimeDateDisplay weather={restingState.weather} />}
         <BottomDescription feed={restingState.feed || ''} />
       </LeftSideContainer>
+      <ResourcesButton
+        to={'/events'}
+      />
     </HomePageContainer>
   );
 }

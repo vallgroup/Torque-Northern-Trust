@@ -1,8 +1,21 @@
+
+
+@font-face {
+  font-family: "Equip Condensed";
+  src: url("../assets/fonts/Hoftype - EquipCondensed-Light.otf") format("otf"),
+       url("../assets/fonts/Hoftype - EquipCondensed-Regular.otf") format("otf"),
+       url("../assets/fonts/Hoftype - EquipCondensed-Italic.otf") format("otf");
+}
+
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Equip Condensed", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 3200px;
+}
+
+p {
+  font-weight: 300;
 }
