@@ -21,13 +21,13 @@ export default function Map() {
   const [poisList, setPoisList] = useState(null)
   const [stage, setStage] = useState('init')
   const map = useMapContent();
-
+// console.log(map)
   useEffect(() => {
     return fetchMap(params.slug);
   }, []);
 
   useEffect(() => {
-    console.log(map);
+    // console.log(map);
     if (map && map.pois && map.pois.pois) {
       map.pois.pois.forEach((item, i) => {
         if (item.preload) {

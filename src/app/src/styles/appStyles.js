@@ -54,3 +54,31 @@ export const Button = styled.button.attrs(props => ({
     }
   }
 `
+
+export const BackgroundTileColor = color => {
+  switch (color) {
+    case "turquoise":
+      return `rgba(100, 200, 175, 0.95)`;
+
+    case "green":
+      return `rgba(40, 145, 65, 0.95)`;
+
+    case "dark green":
+      return `rgba(15, 85, 65, 0.95)`;
+
+    case "orange":
+      return `rgba(190, 155, 55, 0.95)`;
+
+    case "blue":
+      return `rgba(0, 105, 155, 0.95)`;
+
+    case "gold":
+      return `rgba(185, 190, 0, 0.95)`;
+
+    case "gray":
+      return `rgba(100, 100, 105, 0.95)`;
+
+    default:
+      return `transparent`;
+  }
+}

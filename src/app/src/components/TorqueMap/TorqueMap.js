@@ -18,7 +18,7 @@ function TorqueMap(props) {
 
   const map = createRef();
   let searchClient = null;
-
+// console.log(mapDetails)
   useEffect(() => {
     const centerMap = async () => {
       if (google && mapDetails.center) {
@@ -41,14 +41,14 @@ function TorqueMap(props) {
   }, [])
 
   useEffect(() => {
-    console.log(poiSelected)
+    // console.log(poiSelected)
     setPoisList([])
     poiSelected && setPoisList(poiSelected.preset_pois)
   }, [poiSelected])
 
   useEffect(() => {
     if (!mapCenter) return;
-console.log(poisList)
+
     if (updatePOIsList
     && 'function' === typeof updatePOIsList ) {
       updatePOIsList(poisList)
@@ -168,7 +168,7 @@ console.log(poisList)
       return;
     }
 
-    console.log(poisList)
+    // console.log(poisList)
 
     const { google } = props;
     const width = (poiSelected.marker && poiSelected.marker.width) || 60;
@@ -193,6 +193,34 @@ console.log(poisList)
     ));
   }
 
+  const renderCenterMarker = () => {
+// console.log(mapDetails)
+
+    const size = mapDetails && mapDetails.marker
+      ? mapDetails.marker.size.split(',')
+      : [60, 100]
+
+    const width = size[0];
+    const height = size[1];
+// console.log(mapCenter)
+    return (
+      <Marker
+        onClick={onMarkerClick}
+        name={'Northern Trust'}
+        position={mapCenter}
+        zIndex={google.maps.Marker.MAX_ZINDEX + 1}
+        icon={
+          {
+            url: mapDetails?.marker?.url,
+            anchor: new google.maps.Point(width / 2, height),
+            scaledSize: new google.maps.Size(width, height),
+          }
+        }
+        infowindow={mapDetails.infowindow}
+      />
+    )
+  }
+
   return (
     <Map
       google={google}
@@ -202,6 +230,10 @@ console.log(poisList)
       styles={props.styles}
       onClick={onMapClick}
     >
+
+      {renderCenterMarker()}
+
+
       {renderMarkers()}
 
       <InfoWindow marker={activeMarker} visible={showInfowindow}>

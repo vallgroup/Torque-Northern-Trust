@@ -34,6 +34,7 @@ export const SideBarP = styled.p`
   margin-bottom: 5px;
   margin-top: 0;
   font-size: 41pt;
+  font-weight: 600;
   color: #fff;
 `;
 
@@ -55,8 +56,8 @@ export const DisplayContainer = styled.div`
   position: relative;
   top: 22%;
   left: 5%;
-  font-size: 52pt;
-  font-weight: 300;
+  font-size: 65pt;
+  font-weight: 400;
 `;
 
 export const DisplayInnerContainer = styled.div`
@@ -66,11 +67,11 @@ export const DisplayInnerContainer = styled.div`
 
 export const DisplayBoxTitle = styled.h1`
   background: ${({ theme }) => theme.colors.gold};
-  font-size: 65pt;
   display: inline;
   padding: 10px 30px 10px 30px;
   text-transform: uppercase;
-  font-weight: 400;
+  font-size: 52pt;
+  font-weight: 300;
 `;
 
 export const LeftSideContainer = styled.div`
@@ -86,6 +87,7 @@ export const TimeDateContainer = styled.p`
   top: 22%;
   left: 5%;
   font-size: 72pt;
+  font-weight: 300;
   margin: 0;
   margin-top: 50px;
   vertical-align: middle;
@@ -93,7 +95,6 @@ export const TimeDateContainer = styled.p`
 
 export const Span = styled.span`
   font-size: 43pt;
-  line-height: 43pt;
   font-weight: 300;
   text-transform: uppercase;
   vertical-align: middle;
@@ -103,10 +104,11 @@ export const BottomDescriptionContainer = styled.p`
   position: relative;
   top: 24%;
   left: 5%;
-  font-size: 60pt;
+  font-size: 63pt;
   font-weight: 100;
   margin: 0;
   font-style: italic;
+  font-weight: 100;
 `;
 
 export const P = styled(

@@ -55,7 +55,7 @@ export const Logo = styled.img`
 `;
 
 export const HeaderText = styled.h1`
-  font-size: 94pt;
+  font-size: 95pt;
   font-weight: 300;
   margin: 0;
   text-transform: uppercase;

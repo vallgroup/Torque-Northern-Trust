@@ -59,6 +59,7 @@ export const FocusedPortaitContainer = styled(
   background-repeat: no-repeat;
   display: flex;
   align-items: flex-end;
+  overflow: auto;
 `;
 
 export const FocusedDescriptionContainer = styled(
@@ -72,6 +73,7 @@ export const FocusedDescriptionContainer = styled(
   margin: 0 0 4.8611vh 2.1875vw;
   text-align: left;
   padding: 10px 50px 10px 50px;
+  background-color: rgba(0, 0, 0, 0.7);
 `;
 
 export const FocusedIconDescriptionCopy = styled(
@@ -82,7 +84,14 @@ export const FocusedIconDescriptionCopy = styled(
 )`
   flex: 1;
   width: 100%;
-  font-size: 30pt;
+  font-size: 40pt;
+  font-weight: 300;
+
+  &:before {
+    content: '';
+    display: block;
+    clear: both;
+  }
 `;
 
 export const GridIconOverlay = styled.div`
@@ -100,8 +109,10 @@ export const GridIconOverlay = styled.div`
   /* mix-blend-mode: multiply; */
 
   h3 {
-    font-size: 1em;
+    font-size: 24pt;
+    font-weight: 700;
     text-transform: uppercase;
+
   }
 `;
 
@@ -137,12 +148,15 @@ export const FocusedIconDescriptionContainer = styled(
   ${Icon} {
     vertical-align: middle;
     margin-right: 1em;
+    max-width: 165pt;
+    float: left;
   }
 
   h2 {
-    display: inline-block !important;
+    display: inline !important;
     vertical-align: middle;
-    font-size: 36pt;
+    font-size: 50pt;
+    font-wight: 700;
     text-transform: uppercase;
   }
 `;

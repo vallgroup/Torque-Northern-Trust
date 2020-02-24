@@ -30,7 +30,7 @@ export default function GridIcon({ icon, onClick, index }) {
       background_color = `rgba(100, 100, 105, 0.95)`;
       break;
       default:
-      background_color = `rgba(40, 145, 65, 0.95)`;
+      background_color = `transparent`;
     }
   }
 

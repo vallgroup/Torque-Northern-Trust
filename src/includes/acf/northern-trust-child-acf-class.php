@@ -330,6 +330,7 @@ acf_add_local_field_group(array(
 						'id' => '',
 					),
 					'choices' => array(
+						'transparent' => 'No Color',
 						'green' => 'Green',
 						'turquoise' => 'Turquoise',
 						'gold' => 'Gold',
@@ -339,7 +340,7 @@ acf_add_local_field_group(array(
 						'dark green' => 'Dark Green',
 					),
 					'default_value' => array(
-						0 => 'green',
+						0 => 'transparent',
 					),
 					'allow_null' => 0,
 					'multiple' => 0,
