@@ -60,7 +60,7 @@ export default function TimeDateDisplay({weather}) {
 
   useEffect(() => {
     api_key && zip_code && queryWeather();
-  }, [queryWeather])
+  }, [])
 
   const getTime = () => {
     let _h = date.getHours()

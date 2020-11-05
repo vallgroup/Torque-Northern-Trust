@@ -4,17 +4,22 @@ import 'firebase/messaging'
 import 'firebase/remote-config'
 import 'firebase/firestore'
 import 'firebase/auth'
+import 'firebase/performance'
 
 let _remoteConfig = null;
 
+let _analytics = null;
+
 export const logEvent = (evtName, params) => {
-  const _analytics = (firebase && firebase.analytics()) || null;
+  // const _analytics = (firebase && firebase.analytics()) || null;
   _analytics && _analytics.logEvent(evtName, params)
 }
 
-export const firebaseInit = config => {
+export const firebaseInit = async config => {
   if (!firebase.apps.length) {
-    firebase.initializeApp(config)
+    await firebase.initializeApp(config)
+    _analytics = (firebase && firebase.analytics()) || null;
+    (firebase && firebase.performance())
   }
 }
 
