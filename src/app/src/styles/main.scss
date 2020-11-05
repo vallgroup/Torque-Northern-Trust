@@ -1,0 +1,23 @@
+
+
+@font-face {
+  font-family: "Equip Condensed";
+  src: url("../assets/fonts/Hoftype - EquipCondensed-Light.otf") format("otf"),
+       url("../assets/fonts/Hoftype - EquipCondensed-ExtraLight.otf") format("otf"),
+       url("../assets/fonts/Hoftype - EquipCondensed-Regular.otf") format("otf"),
+       url("../assets/fonts/Hoftype - EquipCondensed-Medium.otf") format("otf"),
+       url("../assets/fonts/Hoftype - EquipCondensed-Italic.otf") format("otf");
+}
+
+
+body {
+  margin: 0;
+  font-family: "Equip Condensed", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 3200px;
+}
+
+p {
+  font-weight: 300;
+}

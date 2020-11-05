@@ -204,6 +204,72 @@ You will get a response that looks like this:
 }
 ```
 
+## Get Resting State Content
+
+To get the Resting State content you will make a request to the following url:
+
+```
+GET http://localhost:8000/wp-json/northern-trust/v1/resting-state
+```
+
+You should receive something that looks like this:
+
+```JSON
+{
+    "success": true,
+    "resting_state": {
+        "background_images": [
+            {
+                "ID": 80,
+                "id": 80,
+                "title": "NOTR-0001-Touchscreen-Designs-assets-32-1920px",
+                "filename": "NOTR-0001-Touchscreen-Designs-assets-32-1920px.jpg",
+                "filesize": 189471,
+                "url": "http://localhost:8000/wp-content/uploads/2020/01/NOTR-0001-Touchscreen-Designs-assets-32-1920px.jpg",
+                "link": "http://localhost:8000/notr-0001-touchscreen-designs-assets-32-1920px/",
+                "alt": "",
+                "author": "3",
+                "description": "",
+                "caption": "",
+                "name": "notr-0001-touchscreen-designs-assets-32-1920px",
+                "status": "inherit",
+                "uploaded_to": 0,
+                "date": "2020-01-10 21:34:34",
+                "modified": "2020-01-10 21:35:01",
+                "menu_order": 0,
+                "mime_type": "image/jpeg",
+                "type": "image",
+                "subtype": "jpeg",
+                "icon": "http://localhost:8000/wp-includes/images/media/default.png",
+                "width": 1920,
+                "height": 864,
+                "sizes": {
+                    "thumbnail": "http://localhost:8000/wp-content/uploads/2020/01/NOTR-0001-Touchscreen-Designs-assets-32-1920px-150x150.jpg",
+                    "thumbnail-width": 150,
+                    "thumbnail-height": 150,
+                    "medium": "http://localhost:8000/wp-content/uploads/2020/01/NOTR-0001-Touchscreen-Designs-assets-32-1920px-300x135.jpg",
+                    "medium-width": 300,
+                    "medium-height": 135,
+                    "medium_large": "http://localhost:8000/wp-content/uploads/2020/01/NOTR-0001-Touchscreen-Designs-assets-32-1920px-768x346.jpg",
+                    "medium_large-width": 768,
+                    "medium_large-height": 346,
+                    "large": "http://localhost:8000/wp-content/uploads/2020/01/NOTR-0001-Touchscreen-Designs-assets-32-1920px-1024x461.jpg",
+                    "large-width": 1024,
+                    "large-height": 461,
+                    "1536x1536": "http://localhost:8000/wp-content/uploads/2020/01/NOTR-0001-Touchscreen-Designs-assets-32-1920px-1536x691.jpg",
+                    "1536x1536-width": 1536,
+                    "1536x1536-height": 691,
+                    "2048x2048": "http://localhost:8000/wp-content/uploads/2020/01/NOTR-0001-Touchscreen-Designs-assets-32-1920px.jpg",
+                    "2048x2048-width": 1920,
+                    "2048x2048-height": 864
+                }
+            },
+            ...
+        ]
+    }
+}
+```
+
 ## Portrait Grids
 
 To make a request to get a portrait grid, simply make a `GET` request to the following url:
@@ -338,6 +404,73 @@ You should get a response like the following:
             }
         ]
     }
+}
+```
+
+To make a request to get all published events, simply make a `GET` request to the following url:
+
+```
+GET http://localhost:8000/wp-json/northern-trust/v1/events
+```
+
+You should get a response like the following:
+
+```JSON
+{
+    "success": true,
+    "events": [
+        {
+            "id": 71,
+            "title": "Event 3",
+            "start_date": "25/01/2020 12:00 am",
+            "presentation": [
+                {
+                    "acf_fc_layout": "video",
+                    "video_url": "https://www.youtube.com/watch?v=aXH-QsPTeEI"
+                }
+            ],
+            "agenda": [
+                {
+                    "acf_fc_layout": "wysiwyg",
+                    "content": "<p>Event 3 agenda!</p>\n"
+                }
+            ]
+        },
+        {
+            "id": 70,
+            "title": "Event 2",
+            "start_date": "08/01/2020 12:00 am",
+            "presentation": [
+                {
+                    "acf_fc_layout": "video",
+                    "video_url": "https://www.youtube.com/watch?v=aXH-QsPTeEI"
+                }
+            ],
+            "agenda": [
+                {
+                    "acf_fc_layout": "wysiwyg",
+                    "content": "<p>Event 2 agenda&#8230;. </p>\n"
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "title": "Event",
+            "start_date": "10/12/2019 11:00 am",
+            "presentation": [
+                {
+                    "acf_fc_layout": "video",
+                    "video_url": "https://www.youtube.com/watch?v=nnEeu_1iKS0"
+                }
+            ],
+            "agenda": [
+                {
+                    "acf_fc_layout": "wysiwyg",
+                    "content": "<p>Event 1 agenda&#8230;</p>\n"
+                }
+            ]
+        }
+    ]
 }
 ```
 

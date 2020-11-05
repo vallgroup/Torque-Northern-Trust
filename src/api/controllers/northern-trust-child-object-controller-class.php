@@ -64,4 +64,41 @@ class TQNT_Object_Controller {
 			'title' => $_object->post_title,
 		);
 	}
+
+	public function get_objects( $post_type = '' ) {
+    if ( '' === $post_type ) {
+      return false;
+    }
+
+    $objects = $this->get_objects_data( $post_type );
+
+    if ( $objects ) {
+      return $objects;
+    }
+
+    return false;
+	}
+
+	protected function get_objects_data( $post_type = '' ) {
+
+    $_args = array(
+			'post_type' => $post_type,
+		);
+
+		$_objects_query = get_posts( $_args );
+
+		if ( $_objects_query ) {
+
+			foreach ( $_objects_query as $_object ) {
+				$_objects[] = array(
+					'id' => $_object->ID,
+					'title' => $_object->post_title,
+				);
+			}
+		} else {
+			return false;
+		}
+
+		return $_objects;
+	}
 }

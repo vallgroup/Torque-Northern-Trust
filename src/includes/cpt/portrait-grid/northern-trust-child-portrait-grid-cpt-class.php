@@ -9,7 +9,10 @@ class TQNT_Portrait_Grid_CPT {
   protected $args = array(
     'supports' => array( 'title', ),
     'menu_icon'           => 'dashicons-screenoptions',
-    'show_in_rest'        => true,
+    'public' => true,
+    'show_ui' => true,
+    'show_in_nav_menus' => true,
+    // 'show_in_rest'        => true,
     // more args here
   );
 
