@@ -19,6 +19,8 @@ class TQNT_Resting_State_Controller extends TQNT_Object_Controller {
 		try {
 			$resting_state = $this->get_resting_state_data();
 
+			do_action( 'tqnt_update_twitter_feed' );
+
 			if ( $resting_state ) {
         return Torque_API_Responses::Success_Response( array(
 					'resting_state' => $resting_state

@@ -297,14 +297,17 @@
                             "id": ""
                         },
                         "choices": {
+                            "transparent": "No Color",
                             "green": "Green",
                             "turquoise": "Turquoise",
                             "gold": "Gold",
                             "orange": "Orange",
-                            "blue": "Blue"
+                            "blue": "Blue",
+                            "gray": "Gray",
+                            "dark green": "Dark Green"
                         },
                         "default_value": [
-                            "green"
+                            "transparent"
                         ],
                         "allow_null": 0,
                         "multiple": 0,
@@ -611,9 +614,9 @@
             },
             {
                 "key": "field_5e3ed8626a233",
-                "label": "News Feed",
+                "label": "Twitter Feed",
                 "name": "feed",
-                "type": "text",
+                "type": "textarea",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -624,9 +627,9 @@
                 },
                 "default_value": "",
                 "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
+                "maxlength": "",
+                "rows": "",
+                "new_lines": ""
             },
             {
                 "key": "field_5e17773b7023d",

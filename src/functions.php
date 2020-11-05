@@ -5,6 +5,7 @@ require_once( get_stylesheet_directory() . '/includes/northern-trust-child-nav-m
 require_once( get_stylesheet_directory() . '/includes/widgets/northern-trust-child-widgets-class.php');
 require_once( get_stylesheet_directory() . '/includes/customizer/northern-trust-child-customizer-class.php');
 require_once( get_stylesheet_directory() . '/includes/acf/northern-trust-child-acf-class.php');
+require_once( get_stylesheet_directory() . '/includes/twitter/northern-trust-child-twitter-api-class.php');
 
 require_once( get_stylesheet_directory() . '/includes/cpt/portrait-grid/northern-trust-child-portrait-grid-cpt-class.php');
 require_once( get_stylesheet_directory() . '/includes/cpt/icon-grid/northern-trust-child-icon-grid-cpt-class.php');
@@ -70,7 +71,7 @@ if ( class_exists( 'TQNT_REST_Controller' ) ) {
 if ( class_exists( 'Torque_Map_CPT' ) ) {
   // add POIs to the map CPT
   add_filter( 'torque_map_api_key', function($n) {
-    return $n = 'AIzaSyBtJClII3bXTZjSDnHoIrnawoQgqg9kx0Q';
+    return $n = 'AIzaSyBDXHgKsWsWbHmjo9dPrbmXzL4RiQhEtW8';
   });
   add_filter( Torque_Map_CPT::$POIS_ALLOWED_FILTER, function( $n ) {
     return $n = 5;
@@ -80,6 +81,9 @@ if ( class_exists( 'Torque_Map_CPT' ) ) {
   } );
 }
 
+if ( class_exists( 'TQNT_Twitter_API_Controller' ) ) {
+  add_action( 'tqnt_update_twitter_feed', array( TQNT_Twitter_API_Controller::get_inst(), 'query_tweets' ) );
+}
 
 /**
  * Admin settings
@@ -99,7 +103,7 @@ if ( class_exists( 'Torque_Map_CPT' ) ) {
    // remove_menu_page( 'themes.php' );                 //Appearance
    //remove_menu_page( 'plugins.php' );                //Plugins
    // remove_menu_page( 'users.php' );                  //Users
-   remove_menu_page( 'tools.php' );                  //Tools
+   // remove_menu_page( 'tools.php' );                  //Tools
    // remove_menu_page( 'options-general.php' );        //Settings
 
  }
