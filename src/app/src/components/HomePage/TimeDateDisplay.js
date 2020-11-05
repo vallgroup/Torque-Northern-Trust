@@ -6,7 +6,20 @@ import {
   Span
 } from "./Home.styles";
 import sunIcon from '../../assets/sun_icon.svg'
+import {useInterval} from '../../hooks/useInterval'
 
+//
+// clear_night.png -> Clear_Night
+// sun.png -> Clear
+// cloudy.png -> Clouds
+// fog.png -> Fogw
+// rain.png -> Drizzle | Rain
+// snow.png -> Snow
+// thunderstorm.png -> Thunderstorm
+// wind.png
+// partly_cloudy_day.png
+// partly_cloudy_night.png
+//
 export default function TimeDateDisplay({weather}) {
 
   const [current, setCurrent] = useState({})
@@ -17,21 +30,37 @@ export default function TimeDateDisplay({weather}) {
     zip_code
   } = weather
 
-  useEffect(() => {
+  const weatherIcons = {
+    Clear_Night: 'clear_night.png',
+    Clear : 'sun.png',
+    Clouds : 'cloudy.png',
+    Fogw: 'fog.png',
+    Rain : 'rain.png',
+    Snow : 'snow.png',
+    Thunderstorm: 'thunderstorm.png',
+  }
 
-    const queryWeather = async () => {
-      try {
-        const apiURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zip_code},us&appid=${api_key}&units=imperial`
-        const resp = await axios.get(apiURL)
-        setCurrent(resp.data)
-      } catch(err) {
-        console.error(err)
-      }
+  const queryWeather = async () => {
+    try {
+      const apiURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zip_code},us&appid=${api_key}&units=imperial`
+      const resp = await axios.get(apiURL)
+      setCurrent(resp.data)
+    } catch(err) {
+      console.error(err)
     }
+  }
 
+  useInterval(() => {
+    setDate(new Date(Date.now()))
+  }, 1000)
+
+  useInterval(() => {
+    api_key && zip_code && queryWeather()
+  }, (1000 * 60 * 60))
+
+  useEffect(() => {
     api_key && zip_code && queryWeather();
-
-  }, [])
+  }, [queryWeather])
 
   const getTime = () => {
     let _h = date.getHours()
@@ -77,8 +106,8 @@ export default function TimeDateDisplay({weather}) {
       {current.main
         && `${Math.round(current.main.temp)}º `
       }
-      {
-        <SunIcon src={sunIcon} />
+      {current.weather
+        && <SunIcon src={require(`../../assets/weatherIcons/${weatherIcons[current.weather[0].main]}`)} />
       }
       {getTime()}
        <Span>
