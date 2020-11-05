@@ -62,6 +62,11 @@ export const FocusedPortaitContainer = styled(
   overflow: auto;
 `;
 
+
+export const Span = styled.span`
+  font-size: 23pt;
+`;
+
 export const FocusedDescriptionContainer = styled(
   posed.div({
     enter: { x: 0, opacity: 1 },
@@ -69,11 +74,24 @@ export const FocusedDescriptionContainer = styled(
   })
 )`
   border: 4px solid ${({ theme }) => theme.colors.gold};
-  color: ${({ theme }) => theme.colors.gold};
+  color: white;
   margin: 0 0 4.8611vh 2.1875vw;
   text-align: left;
   padding: 10px 50px 10px 50px;
   background-color: rgba(0, 0, 0, 0.7);
+
+  h1 {
+    font-size: 38px;
+    font-weight: 300;
+    span {
+      font-size: 21px;
+    }
+  }
+
+  ${Span} {
+    font-size: 27px;
+    font-weight: 300;
+  }
 `;
 
 export const FocusedIconDescriptionCopy = styled(
@@ -84,7 +102,7 @@ export const FocusedIconDescriptionCopy = styled(
 )`
   flex: 1;
   width: 100%;
-  font-size: 40pt;
+  font-size: 40px;
   font-weight: 300;
 
   &:before {
@@ -103,13 +121,16 @@ export const GridIconOverlay = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: 24pt;
   text-align: center;
+  padding: 15px;
+  padding-top: 2em;
+  box-sizing: border-box;
   /* mix-blend-mode: multiply; */
 
   h3 {
-    font-size: 24pt;
+    font-size: 24px;
     font-weight: 700;
     text-transform: uppercase;
 
@@ -123,15 +144,9 @@ export const Icon = styled.img`
 `;
 
 export const H1 = styled.div`
-  font-size: 37pt;
-  margin-top: 20px;
+  font-size: 38px;
   margin-bottom: 5px;
 `;
-
-export const Span = styled.span`
-  font-size: 23pt;
-`;
-
 
 export const FocusedIconDescriptionContainer = styled(
   posed.div({
@@ -148,14 +163,14 @@ export const FocusedIconDescriptionContainer = styled(
   ${Icon} {
     vertical-align: middle;
     margin-right: 1em;
-    max-width: 165pt;
+    max-width: 165px;
     float: left;
   }
 
   h2 {
     display: inline !important;
     vertical-align: middle;
-    font-size: 50pt;
+    font-size: 50px;
     font-wight: 700;
     text-transform: uppercase;
   }

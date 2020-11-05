@@ -14,6 +14,9 @@ import {
   PointsOfInterestButtons
 } from "./Map.styles";
 
+import {logEvent} from '../../firebase'
+import {CTA_EVENT} from '../../firebase/events'
+
 export default function Map() {
   const { fetchMap } = useNortherTrustActions();
   const params = useParams();
@@ -31,7 +34,6 @@ export default function Map() {
     if (map && map.pois && map.pois.pois) {
       map.pois.pois.forEach((item, i) => {
         if (item.preload) {
-          console.log(item)
           setPoiSelected(item)
           setPoisList(item.preset_pois)
         }
@@ -53,6 +55,11 @@ export default function Map() {
     : ''
 
   const selectPOI = index => {
+    logEvent(CTA_EVENT, {
+      type: 'map interaction',
+      action: 'POI clicked',
+      label: index.title,
+    })
     setPoisList(null)
     setPoiSelected(index)
   }
@@ -108,12 +115,12 @@ export default function Map() {
             }
           </POIResultList>
 
-          <Button
+          {/*<Button
             inverse
             onClick={e => alert('This will load something awesome!')}
           >
             View Experience
-          </Button>
+          </Button>*/}
         </PointsOfInterest>
       </MapPage>
     </>

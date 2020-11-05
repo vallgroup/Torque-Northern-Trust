@@ -11,9 +11,10 @@ export default function DisplayBox({ homeContent }) {
     <DisplayContainer>
       {homeContent
         && <DisplayInnerContainer>
-          <DisplayBoxTitle>
+          {homeContent.title &&
+            <DisplayBoxTitle>
             {homeContent.title}
-          </DisplayBoxTitle>
+            </DisplayBoxTitle>}
           <P
             dangerouslySetInnerHTML={{
               __html: homeContent.description

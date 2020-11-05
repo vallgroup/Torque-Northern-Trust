@@ -52,18 +52,19 @@ export const RightHeaderContent = styled.div`
 
 export const Logo = styled.img`
   margin-left: 2.5vw;
+  width: 343px;
 `;
 
 export const HeaderText = styled.h1`
-  font-size: 95pt;
-  font-weight: 300;
+  font-size: 94px;
+  font-weight: 100;
   margin: 0;
   text-transform: uppercase;
 `;
 
 export const Divider = styled.div`
   height: 100%;
-  width: 10px;
+  width: 5px;
   margin: 0 50px;
   background: white;
 `;
@@ -71,4 +72,5 @@ export const Divider = styled.div`
 export const HomeButton = styled.img`
   margin-right: 2.5vw;
   height: 100%;
+  width: 102px;
 `;

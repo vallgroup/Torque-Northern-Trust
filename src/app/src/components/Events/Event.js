@@ -18,7 +18,7 @@ export default function Event({
 
   return (
     <EventWrapper>
-      <h2>{`${event.title} // ${event.start_date}`}</h2>
+      <h2>{`${event.title} ${event.start_date}`}</h2>
       <ButtonContainer>
         {event.presentation
           && <EventButton onClick={() => openPresentation(event)}>

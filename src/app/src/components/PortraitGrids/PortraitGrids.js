@@ -8,6 +8,9 @@ import Portraits from './Portraits'
 import {useNortherTrustActions} from '../../redux/hooks/commands/useNorthernTrustActions'
 import {useGridPortraits} from '../../redux/hooks/queries/useGridPortraits'
 
+import {logEvent} from '../../firebase'
+import {CTA_EVENT} from '../../firebase/events'
+
 function PortraitGrids() {
   const {fetchGridPortraits} = useNortherTrustActions()
   const history = useHistory();
@@ -29,28 +32,28 @@ function PortraitGrids() {
   }, [gridPortraits]);
 
   // when the count increments, change the grid portrait that is in focus
-  // useEffect(() => {
-  //   function timedFocus() {
-  //     setFocus(gridPortraits.grid && gridPortraits.grid.portraits[count]);
-  //   }
-  //   return timedFocus();
-  // }, [count]);
+  useEffect(() => {
+    function timedFocus() {
+      setFocus(gridPortraits.grid && gridPortraits.grid.portraits[count]);
+    }
+    return timedFocus();
+  }, [count]);
 
-  // useInterval(
-  //   () => {
-  //     // increment the counter if the counter is less than 22 and the page has not been interacted with recently
-  //     if (count < 22 && !recentlyClicked) {
-  //       setCount(count + 1);
-  //       // reset count to 0 when counter reaches 22 and the page has not been interacted with recently
-  //     } else if (count === 22 && !recentlyClicked) {
-  //       setCount(0);
-  //     }
-  //   },
-  //   5000,
-  //   // useInterval will check to see if recentlyClicked is true, if it is, it will clear the interval
-  //   recentlyClicked
-  // );
-  //
+  useInterval(
+    () => {
+      // increment the counter if the counter is less than 22 and the page has not been interacted with recently
+      if (count < 22 && !recentlyClicked) {
+        setCount(count + 1);
+        // reset count to 0 when counter reaches 22 and the page has not been interacted with recently
+      } else if (count === 22 && !recentlyClicked) {
+        setCount(0);
+      }
+    },
+    4000,
+    // useInterval will check to see if recentlyClicked is true, if it is, it will clear the interval
+    recentlyClicked
+  );
+
   // useEffect(() => {
   //   // send user to homepage
   //   function goHome() {
@@ -74,9 +77,15 @@ function PortraitGrids() {
   // set the focused portrait to the item the user selects, set recentlyClicked to
   // true so the count stops running
   const changeFocus = index => {
+    const __itemSelected = (gridPortraits.grid && gridPortraits.grid.portraits[index])
+    logEvent(CTA_EVENT, {
+      type: 'Portrait Interaction',
+      action: 'Portrait Item Clicked',
+      label: __itemSelected.name,
+    })
     // setCount(index);
-    setFocus(gridPortraits.grid && gridPortraits.grid.portraits[index]);
-    // setRecentlyClicked(true);
+    setFocus(__itemSelected);
+    setRecentlyClicked(true);
   };
 
   return (

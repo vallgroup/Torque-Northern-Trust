@@ -17,11 +17,11 @@ export const HomePageLogo = styled.img`
   top: 7%;
   left: 2%;
   z-index: 9999;
-  width: 11vw;
+  width: 343px;
 `;
 
 export const SideBarContainer = styled.div`
-  width: 20vw;
+  width: 10vw;
   position: absolute;
   right: 2.5%;
   top: 22%;
@@ -33,8 +33,8 @@ export const SideBarContainer = styled.div`
 export const SideBarP = styled.p`
   margin-bottom: 5px;
   margin-top: 0;
-  font-size: 41pt;
-  font-weight: 600;
+  font-size: 41px;
+  font-weight: 400;
   color: #fff;
 `;
 
@@ -56,7 +56,7 @@ export const DisplayContainer = styled.div`
   position: relative;
   top: 22%;
   left: 5%;
-  font-size: 65pt;
+  font-size: 55px;
   font-weight: 400;
 `;
 
@@ -70,7 +70,7 @@ export const DisplayBoxTitle = styled.h1`
   display: inline;
   padding: 10px 30px 10px 30px;
   text-transform: uppercase;
-  font-size: 52pt;
+  font-size: 52px;
   font-weight: 300;
 `;
 
@@ -86,7 +86,7 @@ export const TimeDateContainer = styled.p`
   position: relative;
   top: 22%;
   left: 5%;
-  font-size: 72pt;
+  font-size: 72px;
   font-weight: 300;
   margin: 0;
   margin-top: 50px;
@@ -94,7 +94,7 @@ export const TimeDateContainer = styled.p`
 `;
 
 export const Span = styled.span`
-  font-size: 43pt;
+  font-size: 43px;
   font-weight: 300;
   text-transform: uppercase;
   vertical-align: middle;
@@ -102,13 +102,14 @@ export const Span = styled.span`
 
 export const BottomDescriptionContainer = styled.p`
   position: relative;
-  top: 24%;
+  top: 23%;
   left: 5%;
-  font-size: 63pt;
+  font-size: 55px;
   font-weight: 100;
   margin: 0;
   font-style: italic;
   font-weight: 100;
+  max-width: 80vw;
 `;
 
 export const P = styled(
@@ -141,5 +142,5 @@ export const SunIcon = styled.img`
   width: 60pt;
   display: inline-block;
   margin: 0 20pt 0 0;
-  vertical-align: baseline;
+  vertical-align: text-top;
 `

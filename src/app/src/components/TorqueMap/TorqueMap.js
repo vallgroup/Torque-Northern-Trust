@@ -2,6 +2,9 @@ import React, { useEffect, useState, createRef } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { MapContainer, InfoWindowRoot } from './Map.styles';
 
+import {logEvent} from '../../firebase'
+import {CTA_EVENT} from '../../firebase/events'
+
 function TorqueMap(props) {
   const {
     google,
@@ -153,6 +156,11 @@ function TorqueMap(props) {
   }
 
   const onMarkerClick = (props, marker) => {
+    logEvent(CTA_EVENT, {
+      type: 'map interaction',
+      action: 'Marker clicked',
+      label: marker.name,
+    })
     setActiveMarker(marker)
     setShowInfowindow(true)
   }
@@ -168,11 +176,17 @@ function TorqueMap(props) {
       return;
     }
 
-    // console.log(poisList)
+    let poiWidth = null;
+    let poiHeight = null;
+    if (poiSelected.marker && poiSelected.marker.size) {
+      const sizeArray = poiSelected.marker.size.split(',')
+      poiWidth = sizeArray[0]
+      poiHeight = sizeArray[1]
+    }
 
     const { google } = props;
-    const width = (poiSelected.marker && poiSelected.marker.width) || 60;
-    const height = (poiSelected.marker && poiSelected.marker.height) || 100;
+    const width = poiWidth || 60;
+    const height = poiHeight || 100;
     const filteredPois = poisList.filter(
       poi => !!poi && (poi.latitude && poi.longitude),
     );
@@ -260,5 +274,5 @@ function TorqueMap(props) {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBtJClII3bXTZjSDnHoIrnawoQgqg9kx0Q'
+  apiKey: 'AIzaSyBDXHgKsWsWbHmjo9dPrbmXzL4RiQhEtW8'
 })(TorqueMap);

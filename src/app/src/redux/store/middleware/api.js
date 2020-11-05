@@ -1,8 +1,8 @@
 import { API_REQUEST } from "../actions/api";
 
-const domain = `http://northerntrust.torquelaunchdev.com/wp-json`
+const domain = `https://dontapi.staging.photon.software/wp-json`
 // const domain = `http://localhost:8000/wp-json`
-
+console.log(domain)
 const API_URL = process.env.BASE_URL
   ? process.env.BASE_URL
   : domain;

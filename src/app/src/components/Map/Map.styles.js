@@ -26,7 +26,7 @@ export const PointsOfInterest = styled.div`
 `
 
 export const PointsOfInterestButtons = styled.div`
-  text-align: center;
+  text-align: left;
 `
 
 export const POIResultList = styled.div`
