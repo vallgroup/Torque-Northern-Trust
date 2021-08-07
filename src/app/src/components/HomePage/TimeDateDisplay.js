@@ -50,9 +50,9 @@ export default function TimeDateDisplay({weather}) {
     }
   }
 
-  useInterval(() => {
-    setDate(new Date(Date.now()))
-  }, 1000)
+  // useInterval(() => {
+  //   setDate(new Date(Date.now()))
+  // }, 1000)
 
   useInterval(() => {
     api_key && zip_code && queryWeather()
