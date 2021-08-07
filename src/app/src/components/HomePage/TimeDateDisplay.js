@@ -109,7 +109,9 @@ export default function TimeDateDisplay({weather}) {
       {current.weather
         && <SunIcon src={require(`../../assets/weatherIcons/${weatherIcons[current.weather[0].main]}`)} />
       }
-      {getTime()}
+      {
+        // getTime()
+      }
        <Span>
         {getDay()}
        </Span>
