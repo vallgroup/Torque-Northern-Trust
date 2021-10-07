@@ -8,8 +8,8 @@ import Icons from './Icons'
 import {useNortherTrustActions} from '../../redux/hooks/commands/useNorthernTrustActions'
 import {useGridIcons} from '../../redux/hooks/queries/useGridIcons'
 
-import {logEvent} from '../../firebase'
-import {CTA_EVENT} from '../../firebase/events'
+import {logEvent} from 'fb'
+import {CTA_EVENT} from 'fb/events'
 
 function PortraitGrids() {
   const {fetchGridIcons} = useNortherTrustActions()

@@ -10,21 +10,6 @@ import Agenda from "./components/Agenda/Agenda";
 import Map from "./components/Map/Map";
 import { PoseGroup } from "react-pose";
 
-import {firebaseInit} from './firebase'
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCKYuQ67c3vrzNRREFqxFgTLg8ZkxIMq2Y",
-  authDomain: "nt-tv-app.firebaseapp.com",
-  databaseURL: "https://nt-tv-app.firebaseio.com",
-  projectId: "nt-tv-app",
-  storageBucket: "nt-tv-app.appspot.com",
-  messagingSenderId: "46494947968",
-  appId: "1:46494947968:web:f8eb51b8eead329ced2465",
-  measurementId: "G-LJL2N1ED8T"
-};
-
-firebaseInit(firebaseConfig)
-
 function App() {
   return (
     <AppContainer>
