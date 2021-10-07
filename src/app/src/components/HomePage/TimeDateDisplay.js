@@ -106,7 +106,7 @@ export default function TimeDateDisplay({weather}) {
       {current.main
         && `${Math.round(current.main.temp)}º `
       }
-      {current.weather
+      {current.weather && weatherIcons[current.weather[0].main]
         && <SunIcon src={require(`../../assets/weatherIcons/${weatherIcons[current.weather[0].main]}`)} />
       }
       {
