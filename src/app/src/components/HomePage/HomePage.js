@@ -60,13 +60,6 @@ export default function HomePage() {
           && <TimeDateDisplay weather={restingState.weather} />}
         {/*<BottomDescription feed={restingState.feed || ''} />*/}
       </LeftSideContainer>
-      <ResourcesButton
-        onClick={() => logEvent(MAIN_NAV_EVENT, {
-          url: '/events',
-          page: 'Resources'
-        })}
-        to={'/events'}
-      />
     </HomePageContainer>
   );
 }
