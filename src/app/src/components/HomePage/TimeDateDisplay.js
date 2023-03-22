@@ -50,9 +50,9 @@ export default function TimeDateDisplay({weather}) {
     }
   }
 
-  useInterval(() => {
-    setDate(new Date(Date.now()))
-  }, 1000)
+  // useInterval(() => {
+  //   setDate(new Date(Date.now()))
+  // }, 1000)
 
   useInterval(() => {
     api_key && zip_code && queryWeather()
@@ -106,10 +106,12 @@ export default function TimeDateDisplay({weather}) {
       {current.main
         && `${Math.round(current.main.temp)}º `
       }
-      {current.weather
+      {current.weather && weatherIcons[current.weather[0].main]
         && <SunIcon src={require(`../../assets/weatherIcons/${weatherIcons[current.weather[0].main]}`)} />
       }
-      {getTime()}
+      {
+        // getTime()
+      }
        <Span>
         {getDay()}
        </Span>
